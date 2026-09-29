@@ -14,9 +14,9 @@ The public page gives creator-facing rules on material-connection disclosure, ac
 
 The guide also requires honest first-hand opinions and factual claims that can be verified. The prototype can flag a claim that lacks a supplied authoritative reference for human review, but will not certify unsupported claims as false.
 
-## Translation and product boundary
+## Product boundary
 
-The guide is published in English. Chinese cases are research-team translations/adaptations that preserve the scenario; they are not official CHANEL translations. A text-only prototype cannot establish whether visual text was actually readable for long enough or audio was actually audible. It evaluates only the structured text/placement information supplied.
+The guide is published in English and the evaluation is English-only. A text-only prototype cannot establish whether visual text was actually readable for long enough or audio was actually audible. It evaluates only the structured text/placement information supplied.
 
 The public guide does not provide a private product selling-point list or campaign brief. Do not infer or invent these as official CHANEL rules. This project is not affiliated with or approved by CHANEL, and does not provide legal advice.
 
