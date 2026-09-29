@@ -1,40 +1,38 @@
-# Project plan and instructor-feedback checklist
+# Implementation and evaluation plan
 
-## Why this project
+## Stage 1 — scope and evidence
 
-Review a creator's sponsored-video script against a brand brief. Ordinary keyword search can catch literal words, but may miss slang, metaphor, paraphrase, or implied references. An AI reviewer may catch meaning-based cases, but can also invent issues or flag acceptable copy. The project measures that trade-off rather than assuming AI is better.
+- [x] User selected CHANEL, real public creator rules, and English/Chinese scripts.
+- [x] Capture instructor feedback as implementation and evaluation checks.
+- [x] Identify the official CHANEL creator social-media-guidelines page and document limitations.
+- [x] Freeze a narrow rule matrix with source passages, operational interpretations, and Chinese adaptations.
 
-## Deliverable stages
+## Stage 2 — test design before model runs
 
-1. Confirm the audience, script language, and rule scope.
-2. Finalize a concise problem statement and product boundary.
-3. Define rules and a case schema. Write ground-truth verdicts before model evaluation.
-4. Build a reproducible keyword-search baseline and AI-assisted review prototype.
-5. Evaluate both methods on the same fixed primary set of 30 balanced cases: 10 compliant, 10 violating, and 10 borderline.
-6. Report both error directions, borderline handling, valid structured-output rate, API cost per script, limitations, and representative failures.
-7. Prepare the final written submission and recorded demo.
+- [ ] Define a JSONL schema with case ID, paired-scenario ID, language, structured script fields, ground-truth class, rule tags, and rationale.
+- [ ] Author and review all 30 primary instances before running either method: 10 compliant, 10 violating, 10 borderline; within each class, five English and five Chinese.
+- [ ] Record why each label follows the cited guide; freeze the primary file and its checksum.
+- [ ] Separate prompt-tuning/development cases from the primary set.
 
-## Feedback checklist
+## Stage 3 — prototype
 
-- [ ] At least 30 balanced primary cases; do not mix later stress cases into the primary result.
-- [ ] Ground-truth labels and short rationales authored before running the model.
-- [ ] Include clean scripts and score false positives and false negatives correctly.
-- [ ] Run keyword search on the actual same test cases; do not report an unmeasured baseline.
-- [ ] Include API cost per script (and disclose model, token assumptions, and measurement date).
-- [ ] Document course concepts in the final report, including API cost (Class 5).
+- [ ] Implement deterministic keyword search with a documented bilingual pattern list and explicit rule-to-pattern mapping.
+- [ ] Implement an AI reviewer that receives the same source-grounded rules and structured script; require schema-validated JSON.
+- [ ] Use PASS, FLAG, and HUMAN_REVIEW; require a quoted evidence span and rule ID for each finding.
+- [ ] Keep API keys outside GitHub; capture provider/model, token usage, latency, and actual pricing assumptions.
 
-## Measurement definitions (draft)
+## Stage 4 — evaluation and reporting
 
-- **False positive:** compliant script incorrectly flagged as violating.
-- **False negative:** violating script incorrectly passed as safe.
-- **Borderline escalation:** borderline case routed to a human reviewer rather than guessed as safe/unsafe.
-- **Primary metrics:** violation precision/recall, compliant-script false-positive rate, false-negative count/rate, borderline escalation rate, structured-output validity, and cost per script.
+- [ ] Run both systems on the same frozen 30 instances with settings recorded.
+- [ ] Report a 3-by-3 confusion matrix, per-class and per-language results, false-positive rate on clean cases, false-negative rate on violating cases, and borderline escalation rate.
+- [ ] Report invalid-output rate, average/median cost per script, total evaluation cost, and representative failures.
+- [ ] Disclose that the 30 instances are 15 bilingual paired scenarios; do not describe them as 30 independent underlying scenarios.
+- [ ] Report limitations, source access date, and that public guidelines may change.
 
-The final metric formulas and treatment of borderline cases will be frozen before running the evaluation.
+## Stage 5 — course submission and portfolio
 
-## Decisions to confirm
-
-- Primary reviewer/user
-- English-only or bilingual (English + Chinese)
-- In-scope brand constraints
-- Whether the prototype is a command-line evaluator or reviewer-facing UI
+- [ ] Complete the problem statement and business/technical trade-off analysis.
+- [ ] Prepare clear setup/run instructions and meaningful tests.
+- [ ] Record a concise demo showing the workflow and a contextual case where keyword search and AI differ.
+- [ ] Verify the course cover/self-appraisal requirement against NTU Learn before submission.
+- [ ] Review the repository for secrets, private material, source attribution, and polished README before asking the user to make it public.
