@@ -1,22 +1,24 @@
-# Sponsorship Script Brand-Rule Checker
+# CHANEL Sponsorship Script Brand-Rule Checker
 
-A bilingual (English/Chinese) course-project prototype for checking sponsored-video scripts against real, publicly available brand rules. The project will compare a measured keyword-search baseline with an AI-assisted reviewer while keeping final decisions with a human.
+A bilingual (English/Chinese) course-project prototype that helps a human reviewer check a proposed sponsored-video script against CHANEL's publicly available creator guidelines. It compares an actually measured keyword-search baseline with an AI-assisted reviewer and routes ambiguous cases to a person.
 
-## Status
+## Scope
 
-The student selected real public brand rules and bilingual scripts. Brand/source selection and the narrow operational rule set are being confirmed. The CHANEL guide is documented as a candidate, not a final choice. No evaluation results are claimed yet.
+The MVP focuses on disclosure wording and sponsor identity, disclosure placement represented in structured script fields, and contextual competitor criticism. It does not claim to know CHANEL's private campaign brief or required selling points. See [scope](scope.md), [decisions](decisions.md), [evaluation plan](plan.md), and [brand-source assessment](docs/brand_source_research.md).
 
-## Planned deliverables
+## Evaluation
 
-- Problem statement and product scope
-- Business and technical trade-off analysis
-- Reproducible prototype and labeled bilingual test set
-- Measured keyword-baseline and AI results, including false positives, false negatives, borderline handling, and API cost per script
-- Recorded product demo
-- Self-appraisal/cover page if required by the course submission instructions
+The planned primary set has 30 instances: 10 compliant, 10 violating, and 10 borderline, with five English and five Chinese cases in each class. The 30 instances form 15 bilingual scenario pairs. Labels and rationales will be frozen before running either system. No results are claimed until the keyword baseline and AI reviewer have been run on the same cases.
 
-Project documents: [scope](scope.md), [plan](plan.md), [instructor feedback actions](instructor_feedback_actions.md), and [candidate brand-source assessment](docs/brand_source_research.md).
+## Planned course deliverables
 
-## Evidence and safety boundaries
+- Problem statement and scope
+- Business/technical trade-off analysis
+- Reproducible code and bilingual evaluation data
+- Measured results, including false positives, false negatives, borderline handling, structured-output validity, and API cost per script
+- Recorded demo
+- Self-appraisal/cover page if required by the course instructions
 
-Use authoritative public brand sources and record their URLs and access dates. Keep official rule text separate from project interpretations and Chinese translations. Test scripts are constructed examples, not actual campaign briefs or confidential creator submissions. The prototype supports human review; it does not automatically approve or publish content and is not legal advice.
+## Source and use limits
+
+The source is CHANEL's official [Social Media Guidelines](https://www.chanel.com/us/makeup/social-media-guidelines/), accessed 2026-09-29. The prototype is an independent academic project, not affiliated with or approved by CHANEL. It reviews text fields supplied by the user; it cannot verify actual screen visibility, spoken audibility, or video timing. It supports human review and is not legal advice.
