@@ -1,25 +1,25 @@
-# Candidate brand-source assessment: CHANEL (not yet selected)
+# CHANEL official source assessment
 
 ## Primary source
 
-CHANEL, “Social Media Guidelines” (official U.S. site): https://www.chanel.com/us/makeup/social-media-guidelines/ (accessed 2026-09-29).
+CHANEL, [Social Media Guidelines](https://www.chanel.com/us/makeup/social-media-guidelines/) (official U.S. site; accessed 2026-09-29).
 
-The page publishes creator-facing rules directly. Topics include brand-specific sponsorship disclosure, acceptable versus insufficient labels, disclosure placement across captions and video, truthful first-hand opinions, verifiable product claims, and not implying impartiality when criticizing competitors while connected to CHANEL.
+The public page gives creator-facing rules on material-connection disclosure, acceptable and insufficient wording, disclosure placement by medium, truthful first-hand opinions, supportable factual claims, intellectual property, and not implying impartiality when criticizing competitors while connected to CHANEL.
 
-## Why it fits the project
+## Rules selected for the MVP
 
-- It provides real, sourceable brand rules instead of an invented private campaign brief.
-- Several rules depend on context, not just finding a literal word: whether an endorsement is present, whether disclosure names the sponsor when multiple brands appear, where disclosure appears, and whether criticism could imply impartiality.
-- The official page gives acceptable and unacceptable examples, which supports a reproducible keyword baseline.
-- English and Chinese test scripts can express equivalent scenarios. Chinese wording will be project-authored and labeled as a translation/adaptation; it is not presented as an official CHANEL Chinese rule.
+1. **Disclosure identity and wording:** disclose the material connection clearly; make the sponsoring brand clear when multiple brands appear; do not rely on the guide's listed insufficient labels.
+2. **Placement in script fields:** disclosure should be near the endorsement and at the beginning/above the fold, not only in the profile or behind a “more” interaction. Video scripts are represented with spoken, on-screen-text, and caption fields.
+3. **Competitor criticism and impartiality:** a connected creator should not present criticism of a competitor as impartial. A neutral competitor mention by itself is not a breach under this rule.
 
-## Limits and proposed response
+The guide also requires honest first-hand opinions and factual claims that can be verified. The prototype can flag a claim that lacks a supplied authoritative reference for human review, but will not certify unsupported claims as false.
 
-- The public guide does not supply private product selling points, a competitor blacklist, or real campaign-specific briefs. Do not claim that it does.
-- This would change the original narrow focus on missing selling points to a public creator-guideline review, with disclosure quality and contextual competitor references as the main testable cases.
-- A text prototype cannot verify whether on-screen text is readable, actually shown long enough, or heard clearly. It can review only script/caption fields and should escalate visual/audio placement claims for human review.
-- Whether the user wants CHANEL as the real brand remains to be confirmed before rules and data are frozen.
+## Translation and product boundary
 
-## Supporting official reference
+The guide is published in English. Chinese cases are research-team translations/adaptations that preserve the scenario; they are not official CHANEL translations. A text-only prototype cannot establish whether visual text was actually readable for long enough or audio was actually audible. It evaluates only the structured text/placement information supplied.
 
-The U.S. Federal Trade Commission's influencer disclosure guide discusses disclosures in the same language as the endorsement: https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers. This is a U.S. guidance source and should not be described as Singapore legal advice or a universal legal rule.
+The public guide does not provide a private product selling-point list or campaign brief. Do not infer or invent these as official CHANEL rules. This project is not affiliated with or approved by CHANEL, and does not provide legal advice.
+
+## Supporting reference
+
+The U.S. FTC's [Disclosures 101 for Social Media Influencers](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) discusses disclosure in the same language as the endorsement. This is U.S. guidance; it is not Singapore legal advice or a universal legal rule.
