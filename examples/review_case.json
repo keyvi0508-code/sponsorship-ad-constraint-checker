@@ -1,0 +1,22 @@
+{
+  "case_id": "DEMO-01",
+  "language": "en",
+  "format": "short_video",
+  "multiple_brands": false,
+  "caption": [
+    "#ad",
+    "My side-by-side wear test: the rival brand faded sooner."
+  ],
+  "scenes": [
+    {
+      "verbal_endorsement": true,
+      "visual_endorsement": false,
+      "spoken_text": [
+        "Sponsored by CHANEL. In my side-by-side wear test, the rival brand faded sooner."
+      ],
+      "on_screen_text": []
+    }
+  ],
+  "creator_used_product": true,
+  "claim_reference_sources": []
+}
