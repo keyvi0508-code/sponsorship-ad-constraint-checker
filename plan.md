@@ -3,37 +3,42 @@
 ## Stage 1 — scope and evidence
 
 - [x] User selected CHANEL and its public creator rules.
-- [x] Use English-only scripts to match the official source and avoid translation as an evaluation confound.
+- [x] Use English-only scripts to match the language of the official source and avoid translation as an evaluation confound.
 - [x] Capture instructor feedback as implementation and evaluation checks.
-- [x] Identify the official CHANEL Social Media Guidelines page and document limitations.
+- [x] Identify the official CHANEL creator social-media-guidelines page and document limitations.
 - [x] Freeze a narrow rule matrix with source passages and operational interpretations.
 
 ## Stage 2 — test design before model runs
 
-- [ ] Define a JSONL schema with case ID, language, structured script fields, ground-truth class, rule tags, and rationale.
-- [ ] Author and review all 30 primary instances before running either method: 10 compliant, 10 violating, 10 borderline.
-- [ ] Record why each label follows the cited guide; freeze the primary file and its checksum.
-- [ ] Separate prompt-tuning/development cases from the primary set.
+- [x] Define a JSONL schema with case ID, language, structured script fields, ground-truth class, rule tags, and rationale.
+- [x] Prepare 30 primary instances: 10 compliant, 10 violating, 10 borderline.
+- [x] Record label rationales and freeze the primary file with a checksum.
+- [x] Preserve the initial prompt run and revised prompt as separate development evidence. The revised prompt was informed by initial errors, so neither result is an independent held-out test.
+- [ ] Resolve the two targeted reviewer disagreements in a documented new label version only if the project owner approves; keep frozen v2 and its scores intact until then.
+- [x] Blind-review the additional 30-case extension, adjudicate differences, and publish a versioned combined 60-case dataset without replacing the original frozen v2 file. Treat only the fresh extension as holdout evidence for the already-revised prompt.
+- [x] Review/sign off the two-label adjudication in `reports/extension_peer_review_adjudication_v1.md`; the original and adjudicated versions remain separately recorded.
 
 ## Stage 3 — prototype
 
-- [ ] Implement deterministic keyword search with a documented pattern list and rule-to-pattern mapping.
-- [ ] Implement an AI reviewer that receives the same source-grounded rules and structured script; require schema-validated JSON.
-- [ ] Keep Level 1 JSON assertions separate from Level 2 policy judgement.
-- [ ] Use PASS, FLAG, and HUMAN_REVIEW; require a quoted evidence span and rule ID for each finding.
-- [ ] Keep API keys outside GitHub; capture provider/model, token use, latency, and actual pricing assumptions.
+- [x] Implement deterministic keyword search with documented patterns and rule mapping.
+- [x] Implement an AI reviewer using the same source-grounded rules and structured script; require schema-validated JSON.
+- [x] Keep Level 1 JSON assertions separate from Level 2 policy judgement.
+- [x] Use PASS, FLAG, and HUMAN_REVIEW with evidence and rule IDs.
+- [x] Keep API keys out of project files; capture provider/model, token usage, estimated cost, and pricing assumptions. Verify repository history and ignore rules again before public release.
 
 ## Stage 4 — evaluation and reporting
 
-- [ ] Run both systems on the same frozen 30 instances with settings recorded.
-- [ ] Report a 3-by-3 confusion matrix, per-class results, false-positive rate on clean cases, false-negative rate on violating cases, and borderline escalation rate.
-- [ ] Report invalid-output rate, average/median cost per script, total evaluation cost, and representative failures.
-- [ ] Report limitations, source access date, and that public guidelines may change.
+- [x] Run both systems on the same frozen 30 instances with settings recorded.
+- [x] Report confusion matrices, class results, both error directions, and borderline escalation.
+- [x] Report structured-output validity and estimated API cost per script and overall. Actual provider billing still needs a dashboard check; latency/median were not captured and must not be invented.
+- [x] Document representative disagreements, source access date, synthetic-data limits, prompt-tuning leakage, and the unresolved gold-label question.
+- [x] Measure the keyword baseline on the new holdout without tuning its patterns; it scored 20/30 (66.7%).
+- [ ] Run the locked revised prompt on the frozen 30-case holdout; report its result separately. Do not tune the prompt on those outputs before recording the holdout result.
 
 ## Stage 5 — course submission and portfolio
 
-- [ ] Complete the problem statement and business/technical trade-off analysis.
-- [ ] Prepare clear setup/run instructions and meaningful tests.
+- [ ] Finalize the problem statement and business/technical trade-off analysis using the report draft.
+- [x] Prepare setup/run instructions and meaningful tests (17 tests passed in the current implementation checkpoint; rerun before final submission).
 - [ ] Record a concise demo showing the workflow and a contextual case where keyword search and AI differ.
 - [ ] Verify the course cover/self-appraisal requirement against NTU Learn before submission.
-- [ ] Review the repository for secrets, private material, source attribution, and polished README before asking the user to make it public.
+- [ ] Review the repository for secrets, private material, source attribution, and polished README; confirm private GitHub sync, then make it public only after the user is ready.
