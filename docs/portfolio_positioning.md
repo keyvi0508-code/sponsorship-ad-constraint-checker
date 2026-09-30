@@ -1,40 +1,53 @@
-# Portfolio positioning: Creator Content Review Workbench
+# Creator Content Review Workbench
 
-## Product statement
+## Product brief
 
-I built a local prototype that helps a creator-partnership reviewer screen sponsored short-video scripts against a small, source-grounded rule set. It compares a deterministic keyword baseline with an AI-assisted reviewer, shows evidence and uncertainty, and keeps the final disposition with a person.
+Creator Content Review Workbench helps a creator-partnership reviewer screen sponsored short-video scripts before publication. It compares a deterministic keyword baseline with an AI-assisted review, shows the text evidence behind each finding, and routes uncertain cases to a human decision-maker.
 
-## Product workflow
+The current local prototype applies a narrow rule set derived from CHANEL's public [Social Media Guidelines](https://www.chanel.com/us/makeup/social-media-guidelines/). It is independent and does not represent CHANEL or any private campaign policy.
 
-1. A reviewer loads a saved example or enters caption, spoken copy, on-screen copy, brand context, and first-hand-use metadata.
-2. The keyword baseline returns a free, explainable first pass.
-3. The reviewer may request an AI review after seeing an estimate and confirming that two API calls may incur a charge.
-4. The interface compares verdicts and shows quoted evidence, rule IDs, and rationales.
-5. A human selects a disposition. This demo does not persist the decision.
+## Intended user and problem
 
-The saved example and dashboard use 30 fictional extension cases. On that set, the AI scored 23/30 (76.7%) and the keyword baseline scored 20/30 (66.7%). The AI flagged all 10 clear violations and made no `FLAG` decisions on clean cases, while sending 2 clean cases and 5 borderline cases to `HUMAN_REVIEW`. These are descriptive development results on synthetic data, not a production performance claim.
+The primary user is a reviewer checking creator-submitted copy across captions, spoken scripts, and planned on-screen text. Literal search can catch explicit phrases but miss context; AI can interpret context but may over-escalate acceptable copy. The workbench makes this trade-off visible and keeps the reviewer accountable for the outcome.
 
-## Why the project is relevant to content-governance product work
+## Product flow
 
-Recent TikTok career listings describe LIVE safety and content-ecosystem product work in terms of AI-assisted review, safety or quality metrics, cross-functional policy/operations/engineering collaboration, creator experience, and model evaluation. This project gives me a small, demonstrable example of policy-to-product translation, baseline comparison, error analysis, human escalation, and cost-aware use of an external model. It does not establish that I have shipped a production moderation system.
+1. Load a saved example or enter script text and review context.
+2. Run a free keyword check for explicit signals.
+3. Optionally request an AI review after seeing and confirming its estimated cost.
+4. Compare verdicts, evidence quotes, rule IDs, and rationales.
+5. Record a local human disposition or escalate uncertainty.
 
-- [TikTok Product Manager — LIVE Safety, Singapore](https://lifeattiktok.com/search/7584722257312057653) emphasizes product strategy, safety and operational metrics, creator ecosystems, and AI/ML-supported detection.
-- [TikTok AI Product Manager Graduate — Content Ecosystem](https://lifeattiktok.com/search/7667472978298767621) emphasizes content understanding/classification, precision and recall, annotation/data tools, and collaboration with Policy, Trust & Safety, Engineering, Data Science, and Operations.
-- [TikTok AI Product Manager Project Intern — LIVE Ecosystem Governance](https://lifeattiktok.com/search/7598849238706735365) describes governance tools, moderation mechanisms, ecosystem analysis, and cross-team product iteration.
+The saved example makes no API call. Draft text and reviewer decisions remain in the current session and are not persisted. A live AI review uses two sequential requests.
 
-The closest fit is creator/content policy review and brand safety. The prototype is a pre-publication text review tool. It does not evaluate live video, latency, multimodal signals, adversarial evasion, or platform-scale operations, so I should describe it as adjacent experience when applying to LIVE safety roles.
+## Product decisions
+
+- Evidence before verdict: the model first extracts relevant assertions; the second stage applies the decision rubric.
+- Abstain on ambiguity: the system can return HUMAN_REVIEW instead of forcing a pass or flag.
+- Human accountability: AI findings support review; they do not approve content.
+- Cost visibility: a preflight estimate and explicit confirmation gate every live review.
+- Bounded scope: the prototype checks text. It does not inspect video visibility, audio, timing, or creator conduct.
+
+## Evaluation snapshot
+
+On a balanced 30-case synthetic extension, the AI reviewer scored 23/30 (76.7%), compared with 20/30 (66.7%) for the keyword baseline. It flagged all 10 clear violations and did not flag any clean cases, while escalating 2 clean and 5 borderline examples for human review. Estimated token cost was approximately US$0.0079 per case.
+
+This is development evidence, not a production claim. The dataset is fictional, the sample is small, and the prompt had been revised after earlier results. The comparison does not establish real-world lift or reviewer efficiency.
+
+## Portfolio relevance
+
+The project demonstrates policy-to-product translation, human-in-the-loop workflow design, baseline comparison, model evaluation, error analysis, and cost-aware API use. It is most directly relevant to creator content review, brand safety, and content-governance product work. It is adjacent experience for LIVE safety roles: this prototype does not handle real-time latency, video/audio understanding, adversarial behavior, or platform-scale operations.
 
 ## Interview narrative
 
-> I started from a reviewer problem: literal search can locate explicit phrases but struggles with meaning and context, while a language model can over-escalate acceptable content. I built a small review workbench that puts both methods beside each other, cites the text evidence, and sends ambiguous cases to a human. I evaluated both methods on the same balanced 30-case extension: the AI was correct on 23 cases versus 20 for the keyword baseline, but this was synthetic development evidence rather than proof of real-world lift. The interface makes the trade-offs visible, including clean-case escalation, borderline handling, and estimated API cost. My next validation step would be a permissioned, independently labeled set and reviewer workflow study before making any production claim.
+> I built a review workbench for sponsored creator scripts because literal keyword search misses context, while an AI reviewer can over-escalate acceptable copy. The interface shows keyword and AI findings side by side, cites evidence, and leaves ambiguous cases and final decisions with a person. On a balanced 30-case synthetic extension, the AI scored 23/30 versus 20/30 for the baseline. I treat that as a development result, not proof of production impact. My next step would be to validate the workflow with reviewers and a permissioned, independently labeled dataset before expanding the rules or claiming operational gains.
 
-## Current portfolio gaps
+## Next product validation
 
-- I have not interviewed working reviewers or measured their current review time and workload.
-- The cases are fictional and the reviewer provenance for the blind-label return was not provided.
-- The dashboard reports small-sample outcomes and the extension prompt had been revised after earlier outputs.
-- The local interface does not save review history, support team accounts, provide a configurable ruleset editor, or integrate with a campaign platform.
-- The prototype has not been deployed publicly or security-reviewed for multi-user use.
-- It reviews structured text only; it does not inspect video, audio, or real-time LIVE content.
+- Interview reviewers and map the existing workflow, time spent, and common disagreements.
+- Create a permissioned dataset with independent labels and documented adjudication.
+- Test whether evidence-first results and human escalation improve review quality or time without increasing misses on clean content.
+- Explore a configurable rule set and persistent audit history only after privacy, access, and retention requirements are understood.
+- Evaluate video/audio and real-time requirements separately before positioning this as a LIVE moderation tool.
 
-I will keep those gaps visible in the demo and treat them as the next discovery and validation questions, not as implemented features.
+The local demo has no team accounts, persistent review history, rule editor, or campaign-system integration and has not been deployed or reviewed for multi-user security.
