@@ -1,0 +1,56 @@
+{
+  "n": 30,
+  "accuracy": 0.8666666666666667,
+  "confusion_matrix": {
+    "FLAG": {
+      "FLAG": 10,
+      "HUMAN_REVIEW": 0,
+      "PASS": 0
+    },
+    "HUMAN_REVIEW": {
+      "FLAG": 0,
+      "HUMAN_REVIEW": 6,
+      "PASS": 4
+    },
+    "PASS": {
+      "FLAG": 0,
+      "HUMAN_REVIEW": 0,
+      "PASS": 10
+    }
+  },
+  "false_positives_on_clean": 0,
+  "false_negatives_on_violations": 0,
+  "borderline_escalations": 6,
+  "predictions": {
+    "PASS-01": "PASS",
+    "PASS-02": "PASS",
+    "PASS-03": "PASS",
+    "PASS-04": "PASS",
+    "PASS-05": "PASS",
+    "PASS-06": "PASS",
+    "PASS-07": "PASS",
+    "PASS-08": "PASS",
+    "PASS-09": "PASS",
+    "PASS-10": "PASS",
+    "FLAG-01": "FLAG",
+    "FLAG-02": "FLAG",
+    "FLAG-03": "FLAG",
+    "FLAG-04": "FLAG",
+    "FLAG-05": "FLAG",
+    "FLAG-06": "FLAG",
+    "FLAG-07": "FLAG",
+    "FLAG-08": "FLAG",
+    "FLAG-09": "FLAG",
+    "FLAG-10": "FLAG",
+    "REVIEW-01": "HUMAN_REVIEW",
+    "REVIEW-02": "HUMAN_REVIEW",
+    "REVIEW-03": "PASS",
+    "REVIEW-04": "HUMAN_REVIEW",
+    "REVIEW-05": "HUMAN_REVIEW",
+    "REVIEW-06": "HUMAN_REVIEW",
+    "REVIEW-07": "PASS",
+    "REVIEW-08": "PASS",
+    "REVIEW-09": "HUMAN_REVIEW",
+    "REVIEW-10": "PASS"
+  }
+}

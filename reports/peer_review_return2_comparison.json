@@ -1,0 +1,86 @@
+{
+  "status": "historical_pre_adjudication_snapshot; refers to the earlier dataset and blind packet, not the revised v2 set",
+  "n": 30,
+  "agreement": 19,
+  "raw_agreement": 0.6333333333333333,
+  "cohen_kappa_exploratory": 0.45,
+  "reviewer_counts": {
+    "FLAG": 10,
+    "PASS": 16,
+    "HUMAN_REVIEW": 4
+  },
+  "changed_from_prior": {
+    "R14": {
+      "prior": "FLAG",
+      "current": "PASS"
+    }
+  },
+  "disagreements": [
+    {
+      "review_case_id": "R06",
+      "case_id": "REVIEW-08",
+      "draft": "HUMAN_REVIEW",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R07",
+      "case_id": "REVIEW-10",
+      "draft": "HUMAN_REVIEW",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R09",
+      "case_id": "FLAG-09",
+      "draft": "FLAG",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R12",
+      "case_id": "REVIEW-02",
+      "draft": "HUMAN_REVIEW",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R13",
+      "case_id": "FLAG-06",
+      "draft": "FLAG",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R18",
+      "case_id": "REVIEW-01",
+      "draft": "HUMAN_REVIEW",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R20",
+      "case_id": "FLAG-05",
+      "draft": "FLAG",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R24",
+      "case_id": "FLAG-07",
+      "draft": "FLAG",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R28",
+      "case_id": "FLAG-04",
+      "draft": "FLAG",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R29",
+      "case_id": "REVIEW-07",
+      "draft": "HUMAN_REVIEW",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R30",
+      "case_id": "REVIEW-03",
+      "draft": "HUMAN_REVIEW",
+      "reviewer": "FLAG"
+    }
+  ]
+}

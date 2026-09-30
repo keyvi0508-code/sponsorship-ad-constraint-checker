@@ -1,0 +1,61 @@
+{
+  "n": 30,
+  "accuracy": 0.8,
+  "confusion_matrix": {
+    "FLAG": {
+      "FLAG": 10,
+      "HUMAN_REVIEW": 0,
+      "PASS": 0
+    },
+    "HUMAN_REVIEW": {
+      "FLAG": 0,
+      "HUMAN_REVIEW": 5,
+      "PASS": 5
+    },
+    "PASS": {
+      "FLAG": 0,
+      "HUMAN_REVIEW": 1,
+      "PASS": 9
+    }
+  },
+  "false_positives_on_clean": 0,
+  "false_negatives_on_violations": 0,
+  "borderline_escalations": 5,
+  "predictions": {
+    "PASS-01": "PASS",
+    "PASS-02": "PASS",
+    "PASS-03": "PASS",
+    "PASS-05": "PASS",
+    "PASS-06": "PASS",
+    "PASS-08": "PASS",
+    "PASS-09": "PASS",
+    "FLAG-01": "FLAG",
+    "FLAG-02": "FLAG",
+    "FLAG-03": "FLAG",
+    "FLAG-04": "FLAG",
+    "FLAG-05": "FLAG",
+    "FLAG-06": "FLAG",
+    "FLAG-07": "FLAG",
+    "FLAG-08": "FLAG",
+    "FLAG-09": "FLAG",
+    "FLAG-10": "FLAG",
+    "REVIEW-01": "HUMAN_REVIEW",
+    "REVIEW-02": "HUMAN_REVIEW",
+    "REVIEW-03": "PASS",
+    "REVIEW-04": "HUMAN_REVIEW",
+    "REVIEW-05": "HUMAN_REVIEW",
+    "REVIEW-06": "HUMAN_REVIEW",
+    "REVIEW-07": "PASS",
+    "REVIEW-08": "PASS",
+    "REVIEW-09": "HUMAN_REVIEW",
+    "REVIEW-10": "PASS",
+    "REVIEW-11": "PASS",
+    "REVIEW-12": "PASS",
+    "REVIEW-13": "PASS"
+  },
+  "run_date": "2026-09-29",
+  "dataset_sha256": "cff65dc75a88a6aae1536758fcb67312b69574407ff255dcc7be7fa1b7ed3ac2",
+  "method": "deterministic keyword/rule-search baseline",
+  "api_calls": 0,
+  "api_cost_usd": 0.0
+}

@@ -1,0 +1,55 @@
+{
+  "evaluation_status": "DRAFT_DATASET_DEVELOPMENT_RUN",
+  "provider": "openrouter",
+  "date": "2026-09-30",
+  "price_verified_on": "2026-09-30",
+  "model": "openai/gpt-6-sol",
+  "pricing_usd_per_million_tokens": {
+    "input": 2.0,
+    "output": 10.0
+  },
+  "n_cases": 30,
+  "successful_structured_outputs": 30,
+  "structured_output_rate": 1.0,
+  "usage": {
+    "input_tokens": 31059,
+    "output_tokens": 14026,
+    "stage1_input_tokens": 9633,
+    "stage1_output_tokens": 6212,
+    "stage2_input_tokens": 21426,
+    "stage2_output_tokens": 7814
+  },
+  "total_estimated_cost_usd": 0.202378,
+  "preflight_cost_upper_bound_usd": 1.081488,
+  "authorized_cost_ceiling_usd": 1.5,
+  "estimated_cost_per_case_usd": 0.00674593,
+  "metrics": {
+    "n": 30,
+    "accuracy": 0.8666666666666667,
+    "confusion_matrix": {
+      "FLAG": {
+        "FLAG": 10,
+        "HUMAN_REVIEW": 0,
+        "PASS": 0
+      },
+      "HUMAN_REVIEW": {
+        "FLAG": 0,
+        "HUMAN_REVIEW": 9,
+        "PASS": 1
+      },
+      "PASS": {
+        "FLAG": 0,
+        "HUMAN_REVIEW": 3,
+        "PASS": 7
+      }
+    },
+    "false_positives_on_clean": 0,
+    "human_escalations_on_clean": 3,
+    "false_negatives_marked_safe": 0,
+    "violations_escalated_instead_of_flagged": 0,
+    "borderline_escalations": 9
+  },
+  "results_path": null,
+  "note": "This is not final benchmark evidence until the human-reviewed dataset is frozen.",
+  "raw_results_status": "The initial per-case JSONL output was overwritten by the interrupted prompt-v1 run; the original summary metrics and case-level comparison are retained in ai_evaluation_openrouter_analysis.md."
+}

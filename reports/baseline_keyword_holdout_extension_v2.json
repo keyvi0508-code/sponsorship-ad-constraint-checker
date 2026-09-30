@@ -1,0 +1,56 @@
+{
+  "n": 30,
+  "accuracy": 0.6666666666666666,
+  "confusion_matrix": {
+    "FLAG": {
+      "FLAG": 9,
+      "HUMAN_REVIEW": 0,
+      "PASS": 1
+    },
+    "HUMAN_REVIEW": {
+      "FLAG": 2,
+      "HUMAN_REVIEW": 3,
+      "PASS": 5
+    },
+    "PASS": {
+      "FLAG": 2,
+      "HUMAN_REVIEW": 0,
+      "PASS": 8
+    }
+  },
+  "false_positives_on_clean": 2,
+  "false_negatives_on_violations": 1,
+  "borderline_escalations": 3,
+  "predictions": {
+    "HOLDOUT-01": "PASS",
+    "HOLDOUT-02": "FLAG",
+    "HOLDOUT-03": "PASS",
+    "HOLDOUT-04": "FLAG",
+    "HOLDOUT-05": "FLAG",
+    "HOLDOUT-06": "HUMAN_REVIEW",
+    "HOLDOUT-07": "PASS",
+    "HOLDOUT-08": "FLAG",
+    "HOLDOUT-09": "HUMAN_REVIEW",
+    "HOLDOUT-10": "FLAG",
+    "HOLDOUT-11": "FLAG",
+    "HOLDOUT-12": "PASS",
+    "HOLDOUT-13": "PASS",
+    "HOLDOUT-14": "FLAG",
+    "HOLDOUT-15": "PASS",
+    "HOLDOUT-16": "PASS",
+    "HOLDOUT-17": "FLAG",
+    "HOLDOUT-18": "PASS",
+    "HOLDOUT-19": "FLAG",
+    "HOLDOUT-20": "PASS",
+    "HOLDOUT-21": "PASS",
+    "HOLDOUT-22": "FLAG",
+    "HOLDOUT-23": "PASS",
+    "HOLDOUT-24": "FLAG",
+    "HOLDOUT-25": "FLAG",
+    "HOLDOUT-26": "PASS",
+    "HOLDOUT-27": "HUMAN_REVIEW",
+    "HOLDOUT-28": "FLAG",
+    "HOLDOUT-29": "PASS",
+    "HOLDOUT-30": "PASS"
+  }
+}

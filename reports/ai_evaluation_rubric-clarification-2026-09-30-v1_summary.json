@@ -1,0 +1,58 @@
+{
+  "evaluation_status": "DRAFT_DATASET_DEVELOPMENT_RUN",
+  "provider": "openrouter",
+  "prompt_version": "rubric-clarification-2026-09-30-v1",
+  "resumed_partial_run": true,
+  "cases_completed_before_this_run": 25,
+  "cases_sent_this_run": 5,
+  "date": "2026-09-30",
+  "price_verified_on": "2026-09-30",
+  "model": "openai/gpt-6-sol",
+  "pricing_usd_per_million_tokens": {
+    "input": 2.0,
+    "output": 10.0
+  },
+  "n_cases": 30,
+  "successful_structured_outputs": 30,
+  "structured_output_rate": 1.0,
+  "usage": {
+    "input_tokens": 36590,
+    "output_tokens": 14058,
+    "stage1_input_tokens": 9633,
+    "stage1_output_tokens": 6402,
+    "stage2_input_tokens": 26957,
+    "stage2_output_tokens": 7656
+  },
+  "total_estimated_cost_usd": 0.21376,
+  "preflight_cost_upper_bound_usd": 0.404064,
+  "authorized_cost_ceiling_usd": 1.5,
+  "estimated_cost_per_case_usd": 0.00712533,
+  "metrics": {
+    "n": 30,
+    "accuracy": 0.9,
+    "confusion_matrix": {
+      "FLAG": {
+        "FLAG": 10,
+        "HUMAN_REVIEW": 0,
+        "PASS": 0
+      },
+      "HUMAN_REVIEW": {
+        "FLAG": 0,
+        "HUMAN_REVIEW": 9,
+        "PASS": 1
+      },
+      "PASS": {
+        "FLAG": 0,
+        "HUMAN_REVIEW": 2,
+        "PASS": 8
+      }
+    },
+    "false_positives_on_clean": 0,
+    "human_escalations_on_clean": 2,
+    "false_negatives_marked_safe": 0,
+    "violations_escalated_instead_of_flagged": 0,
+    "borderline_escalations": 9
+  },
+  "results_path": "reports\\ai_evaluation_rubric-clarification-2026-09-30-v1.jsonl",
+  "note": "A prompt revised after inspecting prior outputs is development evidence; use a fresh holdout for an independent evaluation."
+}

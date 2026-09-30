@@ -1,0 +1,85 @@
+{
+  "n": 30,
+  "agree": 18,
+  "raw_agreement": 0.6,
+  "cohen_kappa_exploratory": 0.4,
+  "peer_counts": {
+    "FLAG": 11,
+    "PASS": 15,
+    "HUMAN_REVIEW": 4
+  },
+  "disagreements": [
+    {
+      "review_case_id": "R06",
+      "case_id": "REVIEW-08",
+      "gold_verdict": "HUMAN_REVIEW",
+      "peer_verdict": "FLAG"
+    },
+    {
+      "review_case_id": "R07",
+      "case_id": "REVIEW-10",
+      "gold_verdict": "HUMAN_REVIEW",
+      "peer_verdict": "FLAG"
+    },
+    {
+      "review_case_id": "R09",
+      "case_id": "FLAG-09",
+      "gold_verdict": "FLAG",
+      "peer_verdict": "PASS"
+    },
+    {
+      "review_case_id": "R12",
+      "case_id": "REVIEW-02",
+      "gold_verdict": "HUMAN_REVIEW",
+      "peer_verdict": "FLAG"
+    },
+    {
+      "review_case_id": "R13",
+      "case_id": "FLAG-06",
+      "gold_verdict": "FLAG",
+      "peer_verdict": "PASS"
+    },
+    {
+      "review_case_id": "R14",
+      "case_id": "PASS-09",
+      "gold_verdict": "PASS",
+      "peer_verdict": "FLAG"
+    },
+    {
+      "review_case_id": "R18",
+      "case_id": "REVIEW-01",
+      "gold_verdict": "HUMAN_REVIEW",
+      "peer_verdict": "FLAG"
+    },
+    {
+      "review_case_id": "R20",
+      "case_id": "FLAG-05",
+      "gold_verdict": "FLAG",
+      "peer_verdict": "PASS"
+    },
+    {
+      "review_case_id": "R24",
+      "case_id": "FLAG-07",
+      "gold_verdict": "FLAG",
+      "peer_verdict": "PASS"
+    },
+    {
+      "review_case_id": "R28",
+      "case_id": "FLAG-04",
+      "gold_verdict": "FLAG",
+      "peer_verdict": "PASS"
+    },
+    {
+      "review_case_id": "R29",
+      "case_id": "REVIEW-07",
+      "gold_verdict": "HUMAN_REVIEW",
+      "peer_verdict": "PASS"
+    },
+    {
+      "review_case_id": "R30",
+      "case_id": "REVIEW-03",
+      "gold_verdict": "HUMAN_REVIEW",
+      "peer_verdict": "FLAG"
+    }
+  ]
+}

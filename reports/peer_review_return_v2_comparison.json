@@ -1,0 +1,216 @@
+{
+  "status": "revised_dataset_v2_peer_review_return",
+  "n": 30,
+  "agreement": 20,
+  "raw_agreement": 0.6666666666666666,
+  "cohen_kappa": 0.49999999999999994,
+  "gold_counts": {
+    "FLAG": 10,
+    "HUMAN_REVIEW": 10,
+    "PASS": 10
+  },
+  "reviewer_counts": {
+    "PASS": 11,
+    "HUMAN_REVIEW": 8,
+    "FLAG": 11
+  },
+  "confusion_matrix_rows_gold_columns_reviewer": {
+    "PASS": {
+      "PASS": 7,
+      "FLAG": 3,
+      "HUMAN_REVIEW": 0
+    },
+    "FLAG": {
+      "PASS": 3,
+      "FLAG": 6,
+      "HUMAN_REVIEW": 1
+    },
+    "HUMAN_REVIEW": {
+      "PASS": 1,
+      "FLAG": 2,
+      "HUMAN_REVIEW": 7
+    }
+  },
+  "cases": [
+    {
+      "review_case_id": "R01",
+      "case_id": "FLAG-09",
+      "gold": "FLAG",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R02",
+      "case_id": "REVIEW-05",
+      "gold": "HUMAN_REVIEW",
+      "reviewer": "HUMAN_REVIEW"
+    },
+    {
+      "review_case_id": "R03",
+      "case_id": "REVIEW-01",
+      "gold": "HUMAN_REVIEW",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R04",
+      "case_id": "REVIEW-12",
+      "gold": "HUMAN_REVIEW",
+      "reviewer": "HUMAN_REVIEW"
+    },
+    {
+      "review_case_id": "R05",
+      "case_id": "REVIEW-10",
+      "gold": "PASS",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R06",
+      "case_id": "REVIEW-04",
+      "gold": "HUMAN_REVIEW",
+      "reviewer": "HUMAN_REVIEW"
+    },
+    {
+      "review_case_id": "R07",
+      "case_id": "FLAG-04",
+      "gold": "FLAG",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R08",
+      "case_id": "FLAG-01",
+      "gold": "FLAG",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R09",
+      "case_id": "FLAG-07",
+      "gold": "FLAG",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R10",
+      "case_id": "REVIEW-02",
+      "gold": "PASS",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R11",
+      "case_id": "FLAG-06",
+      "gold": "FLAG",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R12",
+      "case_id": "REVIEW-08",
+      "gold": "PASS",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R13",
+      "case_id": "REVIEW-07",
+      "gold": "HUMAN_REVIEW",
+      "reviewer": "HUMAN_REVIEW"
+    },
+    {
+      "review_case_id": "R14",
+      "case_id": "PASS-01",
+      "gold": "PASS",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R15",
+      "case_id": "REVIEW-13",
+      "gold": "HUMAN_REVIEW",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R16",
+      "case_id": "PASS-05",
+      "gold": "PASS",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R17",
+      "case_id": "REVIEW-11",
+      "gold": "HUMAN_REVIEW",
+      "reviewer": "HUMAN_REVIEW"
+    },
+    {
+      "review_case_id": "R18",
+      "case_id": "FLAG-05",
+      "gold": "FLAG",
+      "reviewer": "HUMAN_REVIEW"
+    },
+    {
+      "review_case_id": "R19",
+      "case_id": "REVIEW-09",
+      "gold": "HUMAN_REVIEW",
+      "reviewer": "HUMAN_REVIEW"
+    },
+    {
+      "review_case_id": "R20",
+      "case_id": "FLAG-10",
+      "gold": "FLAG",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R21",
+      "case_id": "REVIEW-03",
+      "gold": "HUMAN_REVIEW",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R22",
+      "case_id": "REVIEW-06",
+      "gold": "HUMAN_REVIEW",
+      "reviewer": "HUMAN_REVIEW"
+    },
+    {
+      "review_case_id": "R23",
+      "case_id": "PASS-06",
+      "gold": "PASS",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R24",
+      "case_id": "FLAG-03",
+      "gold": "FLAG",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R25",
+      "case_id": "FLAG-08",
+      "gold": "FLAG",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R26",
+      "case_id": "PASS-09",
+      "gold": "PASS",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R27",
+      "case_id": "PASS-02",
+      "gold": "PASS",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R28",
+      "case_id": "PASS-08",
+      "gold": "PASS",
+      "reviewer": "PASS"
+    },
+    {
+      "review_case_id": "R29",
+      "case_id": "FLAG-02",
+      "gold": "FLAG",
+      "reviewer": "FLAG"
+    },
+    {
+      "review_case_id": "R30",
+      "case_id": "PASS-03",
+      "gold": "PASS",
+      "reviewer": "PASS"
+    }
+  ]
+}
