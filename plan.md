@@ -33,12 +33,12 @@
 - [x] Report structured-output validity and estimated API cost per script and overall. Actual provider billing still needs a dashboard check; latency/median were not captured and must not be invented.
 - [x] Document representative disagreements, source access date, synthetic-data limits, prompt-tuning leakage, and the unresolved gold-label question.
 - [x] Measure the keyword baseline on the new holdout without tuning its patterns; it scored 20/30 (66.7%).
-- [ ] Run the locked revised prompt on the frozen 30-case holdout; report its result separately. Do not tune the prompt on those outputs before recording the holdout result.
+- [x] Run the locked revised prompt on the frozen 30-case extension and report its result separately: AI 23/30 (76.7%) versus keyword baseline 20/30 (66.7%); do not tune on these outputs and continue calling this set a holdout.
 
 ## Stage 5 — course submission and portfolio
 
 - [ ] Finalize the problem statement and business/technical trade-off analysis using the report draft.
-- [x] Prepare setup/run instructions and meaningful tests (17 tests passed in the current implementation checkpoint; rerun before final submission).
+- [x] Prepare setup/run instructions and meaningful tests (19 tests pass in the current implementation checkpoint; rerun before final submission).
 - [ ] Record a concise demo showing the workflow and a contextual case where keyword search and AI differ.
 - [ ] Verify the course cover/self-appraisal requirement against NTU Learn before submission.
 - [ ] Review the repository for secrets, private material, source attribution, and polished README; confirm private GitHub sync, then make it public only after the user is ready.
