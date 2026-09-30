@@ -1,1 +1,1 @@
-"""CHANEL sponsorship script review prototype."""
+"""CHANEL script checker prototype."""
