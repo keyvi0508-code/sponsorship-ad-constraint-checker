@@ -10,7 +10,7 @@ Brand and creator-partnership reviewers must check sponsored short-form video sc
 
 The prototype is designed to help a reviewer find evidence and decide what needs attention. It does not make final approval decisions.
 
-**Dataset note:** The repository now contains a 60-case dataset: the original 30-case development set and a separate, blind-reviewed 30-case holdout extension. The results below are the original development-set scores only; the new holdout has not yet been run through either system.
+**Dataset note:** The repository contains a 60-case dataset: the original 30-case development set and a separately blind-reviewed, frozen 30-case extension. Both systems have now been evaluated on the extension. Because the prompt was revised after earlier outputs were inspected, the extension result is reported as a prompt-locked development check, not a final independent benchmark.
 
 ## 2. User, scope, and source
 
@@ -26,9 +26,11 @@ The keyword baseline is cheap, reproducible, and easy to explain, but depends on
 
 The AI experiment used OpenRouter with `openai/gpt-6-sol`. The revised run processed 30 cases with 36,590 input tokens and 14,058 output tokens. At the recorded rates, estimated usage cost was US$0.213760 total, or about US$0.00713 per case. The provider dashboard should be checked for actual billed cost; an interrupted request may not appear in the saved token totals. This figure excludes human-review labor and production overhead.
 
+The holdout AI run used the same provider and model and processed 30 cases with 38,229 input tokens and 16,102 output tokens. Estimated usage cost was US$0.237478 total, or about US$0.00792 per case. The evaluator returned valid structured output for all 30 cases. The provider dashboard should be checked for actual billed cost; this estimate excludes human-review labor and production overhead.
+
 ## 4. Evaluation method
 
-The original frozen v2 development set contains 30 synthetic English cases: 10 labelled `PASS`, 10 `FLAG`, and 10 `HUMAN_REVIEW`. A new 30-case extension has since been blind-reviewed and frozen as a holdout, preserving 10 examples in each class. The extension labels and original development labels are combined in a versioned 60-case file, with the split recorded per case. The keyword baseline has been run on both sets; the AI reviewer has been run only on the original 30 cases so far. The reported revised AI run used prompt version `rubric-clarification-2026-09-30-v1`; it produced 30 valid structured outputs.
+The original frozen v2 development set contains 30 synthetic English cases: 10 labelled `PASS`, 10 `FLAG`, and 10 `HUMAN_REVIEW`. A new 30-case extension was blind-reviewed and frozen separately, preserving 10 examples in each class. The extension labels and original development labels are combined in a versioned 60-case file, with the split recorded per case. Both the keyword baseline and AI reviewer have been run on the extension. The AI run used prompt version `rubric-clarification-2026-09-30-v1` and produced 30 valid structured outputs.
 
 The revised prompt was created after inspecting the initial AI run. Therefore the 90.0% result is development evidence, not an independent estimate of generalization. The cases are synthetic, the sample is small, and several cases probe judgment boundaries. A fresh held-out set is needed for an independent performance claim.
 
@@ -36,9 +38,11 @@ The revised prompt was created after inspecting the initial AI run. Therefore th
 
 | Method | Correct | Accuracy | Clear violations flagged | Clean cases incorrectly flagged | Clean cases sent to human review | Borderline cases sent to human review |
 |---|---:|---:|---:|---:|---:|---:|
-| Keyword / Ctrl+F baseline | 24/30 | 80.0% | 10/10 | 0 | 1 | 5/10 |
-| Initial AI prompt | 26/30 | 86.7% | 10/10 | 0 | 3 | 9/10 |
-| Revised AI prompt v1 | 27/30 | 90.0% | 10/10 | 0 | 2 | 9/10 |
+| Original development — keyword baseline | 24/30 | 80.0% | 10/10 | 0 | 1 | 5/10 |
+| Original development — initial AI prompt | 26/30 | 86.7% | 10/10 | 0 | 3 | 9/10 |
+| Original development — revised AI prompt v1 | 27/30 | 90.0% | 10/10 | 0 | 2 | 9/10 |
+| New extension — keyword baseline | 20/30 | 66.7% | 9/10 | 2 | 0 | 3/10 |
+| New extension — AI reviewer v1 | 23/30 | 76.7% | 10/10 | 0 | 2 | 5/10 |
 
 For the revised AI run, the confusion matrix below uses the human-adjudicated frozen labels as rows and system predictions as columns.
 
@@ -50,7 +54,9 @@ For the revised AI run, the confusion matrix below uses the human-adjudicated fr
 
 The revised AI did not mark any of the 10 clear violations safe (`FLAG` recall 10/10 on this set), and it did not issue a `FLAG` on any clean case. It sent 2 of 10 clean cases to human review, which is a conservative escalation rather than a false `FLAG`. It escalated 9 of 10 borderline cases. The keyword baseline also flagged all 10 clear violations, but had lower overall accuracy because of errors on other classes.
 
-On the new frozen holdout, the keyword baseline scored 20/30 (66.7%): it flagged 9/10 clear violations, incorrectly flagged 2/10 clean cases, and escalated 3/10 borderline cases. The revised AI prompt has not yet been run on the holdout, so there is no AI-versus-baseline holdout comparison. See [the holdout baseline analysis](holdout_keyword_baseline_results.md).
+On the new frozen extension, the keyword baseline scored 20/30 (66.7%): it flagged 9/10 clear violations, incorrectly flagged 2/10 clean cases, and escalated 3/10 borderline cases. The AI reviewer scored 23/30 (76.7%): it flagged all 10 clear violations, marked no clean case `FLAG`, sent 2/10 clean cases and 5/10 borderline cases to human review, and produced valid structured output in all 30 cases. Both systems were correct on 15 cases; AI alone was correct on 8, the baseline alone on 5, and both were wrong on 2. The net difference is three additional correct cases for AI on this set. See [the holdout evaluation](holdout_keyword_baseline_results.md) and the raw [AI summary](ai_evaluation_extension_v2_summary.json).
+
+The AI run summary is explicitly marked `DRAFT_DATASET_DEVELOPMENT_RUN`: the prompt was revised after inspecting the earlier development outputs. The extension was held out from those model calls and the prompt was not changed during this run, so these are useful results on new cases, but the small synthetic set and prompt/data development history mean they are not a final independent estimate of real-world performance.
 
 On a case-by-case comparison, the revised AI was correct where the keyword baseline was wrong on 5 cases; the baseline was correct where the AI was wrong on 2; both were wrong on 1; and both were correct on 22. The net difference is three additional correct cases for the revised AI on this dataset. With only 30 synthetic cases, this should be treated descriptively, not as statistically reliable evidence that AI is generally superior.
 
@@ -64,8 +70,8 @@ The frozen v2 dataset and reported scores have not been changed. The targeted re
 
 The evaluation uses only 30 synthetic English cases from a narrow interpretation of one public guide. It does not show performance on real creator submissions, other brands, languages, visual content, or audio. The prompt was revised after seeing initial errors, so prompt-v1 is not held out. The labels for two cases may need formal adjudication. Estimated token cost is not a substitute for checking the provider invoice, and no latency distribution was captured.
 
-The next evaluation is to run the frozen 30-case holdout with the prompt locked as-is. Since the current prompt has already seen the original 30, report the fresh extension as the holdout result and the combined 60 only as a supplementary descriptive result. Also report per-class precision/recall and reviewer workload, and record actual API billing and latency. The interface should continue to show evidence and uncertainty so the human reviewer can challenge the model.
+The extension evaluation is complete and the prompt should stay locked while these results are reported. Stronger future evidence requires a newly sourced and independently labeled test set. Also record actual API billing and latency, and report per-class precision/recall and reviewer workload where the dataset supports them. The interface should continue to show evidence and uncertainty so the human reviewer can challenge the model.
 
 ## 8. Current submission status
 
-The prototype, source-grounded rule notes, original 30-case development evaluation, a separately frozen 30-case holdout, and the combined 60-case dataset are present in the project folder. Remaining course-facing work is to evaluate the holdout without prompt changes, update this report with those results, record a short demo, verify any cover-page or self-appraisal requirements in NTU Learn, rerun checks, and complete private GitHub synchronization and pre-publication review. The repository should not be made public until secrets, history, attribution, and user-approved readiness have been checked.
+The prototype, source-grounded rule notes, original 30-case development evaluation, separately frozen 30-case extension evaluation, and combined 60-case dataset are present in the project folder and private GitHub repository. Remaining course-facing work is to finalize this report, record a short demo, verify any cover-page or self-appraisal requirements in NTU Learn, check actual API billing, rerun checks, and complete a final repository review. The repository should not be made public until secrets, history, attribution, and user-approved readiness have been checked.

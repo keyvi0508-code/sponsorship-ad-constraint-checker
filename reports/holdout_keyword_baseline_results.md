@@ -1,10 +1,39 @@
-# Keyword baseline on the 30-case holdout
+# Holdout evaluation: keyword baseline and AI reviewer
 
 **Dataset:** `extension_cases_v2.jsonl` (frozen v2)  
-**Run:** local keyword baseline, no API calls  
+**Runs:** deterministic keyword baseline (no API calls) and two-stage AI reviewer via OpenRouter  
 **Date:** 2026-09-30
 
-The deterministic keyword baseline scored **20/30 (66.7%)** on the new balanced holdout. Gold labels are rows; baseline predictions are columns.
+The deterministic keyword baseline scored **20/30 (66.7%)**. The AI reviewer scored **23/30 (76.7%)**, three more correct cases on this 30-case set. The AI's estimated token cost was **US$0.237478 total** (about **US$0.00792 per case**) at the recorded rates; check the provider dashboard for actual billing. Both systems were evaluated against the same frozen labels.
+
+The AI returned valid structured output for all 30 cases. Gold labels are rows and system predictions are columns.
+
+### AI reviewer confusion matrix
+
+| Gold \\ Prediction | FLAG | HUMAN_REVIEW | PASS |
+|---|---:|---:|---:|
+| FLAG | 10 | 0 | 0 |
+| HUMAN_REVIEW | 4 | 5 | 1 |
+| PASS | 0 | 2 | 8 |
+
+It flagged all 10 clear violations and marked none of them `PASS`. It also issued no `FLAG` on clean cases; two clean cases were conservatively sent to human review. It sent 5/10 borderline cases to human review. Its seven disagreements were HOLDOUT-06, 07, 09, 22, 26, 27, and 30; the most consequential errors were marking HOLDOUT-26 `PASS` when its gold label is `HUMAN_REVIEW`, and escalating four borderline cases to `FLAG`.
+
+### Per-class precision and recall
+
+Precision and recall are calculated one class at a time against the other two classes.
+
+| System | Class | Precision | Recall |
+|---|---|---:|---:|
+| AI reviewer | FLAG | 71.4% | 100.0% |
+| AI reviewer | HUMAN_REVIEW | 71.4% | 50.0% |
+| AI reviewer | PASS | 88.9% | 80.0% |
+| Keyword baseline | FLAG | 69.2% | 90.0% |
+| Keyword baseline | HUMAN_REVIEW | 100.0% | 30.0% |
+| Keyword baseline | PASS | 57.1% | 80.0% |
+
+### Keyword baseline confusion matrix
+
+The deterministic keyword baseline scored **20/30 (66.7%)** on the balanced holdout. Gold labels are rows; baseline predictions are columns.
 
 | Gold \ Prediction | FLAG | HUMAN_REVIEW | PASS |
 |---|---:|---:|---:|
@@ -14,16 +43,14 @@ The deterministic keyword baseline scored **20/30 (66.7%)** on the new balanced 
 
 It flagged 9/10 clear violations and marked one violation `PASS`. It incorrectly flagged 2/10 clean cases. It escalated 3/10 borderline cases to a person; on the other 7, it chose a definitive verdict. The model was correct on 8/10 clean cases.
 
-This is an actual measured baseline on the holdout, not a result inferred from the earlier 30 cases. Do not tune the keyword patterns against this set and continue calling it a holdout. The saved per-case results are in [baseline_keyword_holdout_extension_v2.json](baseline_keyword_holdout_extension_v2.json).
+This is an actual measured baseline on the holdout, not a result inferred from the earlier 30 cases. Do not tune the keyword patterns against this set and continue calling it a holdout. The saved per-case results are in [baseline_keyword_holdout_extension_v2.json](baseline_keyword_holdout_extension_v2.json); AI per-case outputs and summary are [ai_evaluation_extension_v2.jsonl](ai_evaluation_extension_v2.jsonl) and [ai_evaluation_extension_v2_summary.json](ai_evaluation_extension_v2_summary.json).
 
-## AI holdout run status
+### Case-by-case comparison
 
-The AI reviewer has not been run on these cases. The revised prompt should be locked before its first call. Using the previous run's observed average, a 30-case run is estimated at about **US$0.214**; the conservative preflight ceiling is **US$1.144**, within the project's authorized US$1.50 cap. Actual token billing will depend on outputs and should be checked in the provider dashboard.
+Both systems were correct on 15 cases; the AI alone was correct on 8, the keyword baseline alone on 5, and both were wrong on 2. This gives the AI a net advantage of three correct cases here, but the sample is too small to support a broad claim of superiority.
 
-The evaluation command to run from the project directory in the PowerShell session where the API key is configured is:
+## Interpretation and limitations
 
-```powershell
-python -m src.evaluate_ai data/extension_cases_v2.jsonl --manifest data/extension_frozen_manifest_v2.json --output reports/ai_evaluation_extension_v2.jsonl --summary reports/ai_evaluation_extension_v2_summary.json --run-api --confirm-paid-run
-```
+The run summary labels this `DRAFT_DATASET_DEVELOPMENT_RUN` and notes that the prompt had been revised after inspecting earlier outputs. The extension was frozen and kept separate from those earlier model runs, so this is a useful prompt-locked check on new cases, but it should remain development evidence rather than a final independent benchmark. The scripts are synthetic and the labels depend on a small peer-review/adjudication process. Do not tune the prompt or keyword patterns against these results and continue calling this set a holdout. A new, independently sourced and labeled test set would be needed for a stronger generalization claim.
 
-The 30-case call is separate from the original development run. Do not change the prompt after examining these results; any later prompt revision would need another fresh holdout.
+The run made 60 model-stage requests for 30 cases, produced 30/30 structured outputs, and recorded 38,229 input and 16,102 output tokens. Estimated cost at the recorded prices was US$0.237478; this is not a provider invoice. The raw output and summary are preserved for auditability.
