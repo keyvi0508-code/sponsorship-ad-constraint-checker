@@ -1,0 +1,38 @@
+{
+  "status": "FROZEN_WITH_DOCUMENTED_LIMITATIONS",
+  "frozen_on": "2026-09-30",
+  "cases_file": "data/combined_cases_v3_60.jsonl",
+  "sha256": "e0af3adcb15aa7717456b92252691cd6522e86240cae06452ae523be8c4352b9",
+  "n_cases": 60,
+  "class_counts": {
+    "PASS": 20,
+    "FLAG": 20,
+    "HUMAN_REVIEW": 20
+  },
+  "split_counts": {
+    "development_v2": 30,
+    "holdout_extension_v2": 30
+  },
+  "class_counts_by_split": {
+    "development_v2": {
+      "PASS": 10,
+      "FLAG": 10,
+      "HUMAN_REVIEW": 10
+    },
+    "holdout_extension_v2": {
+      "PASS": 10,
+      "FLAG": 10,
+      "HUMAN_REVIEW": 10
+    }
+  },
+  "label_provenance": {
+    "development_v2": "data/frozen_manifest.json",
+    "holdout_extension_v2": "data/extension_frozen_manifest_v2.json"
+  },
+  "limitations": [
+    "The original v2 has two documented possible label-boundary inconsistencies (REVIEW-08 and REVIEW-10); original labels are preserved.",
+    "Extension reviewer identity was not provided.",
+    "All cases are synthetic and English-only.",
+    "Combined 60-case score is descriptive; report holdout_extension_v2 separately for revised-prompt evaluation."
+  ]
+}

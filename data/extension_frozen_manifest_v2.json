@@ -1,0 +1,24 @@
+{
+  "status": "FROZEN",
+  "frozen_on": "2026-09-30",
+  "cases_file": "data/extension_cases_v2.jsonl",
+  "sha256": "c3865f5dbb43bb33b079016b836f0a531d323592fe04b807ea361c5dc9417945",
+  "n_cases": 30,
+  "class_counts": {
+    "PASS": 10,
+    "FLAG": 10,
+    "HUMAN_REVIEW": 10
+  },
+  "review_packet": "data/extension_blind_review_packet_v1.md",
+  "reviewed_cases": 30,
+  "initial_reviewer_agreement": "21/30 (70.0%)",
+  "adjudication_report": "reports/extension_peer_review_adjudication_v1.md",
+  "project_owner_signoff": "2026-09-30 (user said continue after proposed two-label changes)",
+  "evaluation_status": "UNTESTED_HOLDOUT",
+  "ai_evaluation_performed": false,
+  "limitations": [
+    "Reviewer identity was not provided.",
+    "Synthetic English-only set.",
+    "One reviewer round; raw agreement is not a reliability estimate."
+  ]
+}

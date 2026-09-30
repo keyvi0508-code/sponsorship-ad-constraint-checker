@@ -1,0 +1,36 @@
+{
+  "brand": "CHANEL",
+  "source_url": "https://www.chanel.com/us/makeup/social-media-guidelines/",
+  "source_accessed": "2026-09-29",
+  "rules": [
+    {
+      "id": "CH-DISC-01",
+      "name": "Clear material-connection disclosure",
+      "source_sections": [1, 2],
+      "summary": "Clearly disclose the creator's material connection. Make CHANEL's sponsorship identifiable when multiple brands appear. Do not rely on labels the guide identifies as insufficient.",
+      "acceptable_disclosure_patterns": ["#ad", "#sponsored", "#paid", "#chanelpartner", "#giftfromchanel", "sponsored by chanel", "paid partnership with chanel"],
+      "insufficient_disclosure_patterns": ["thanks chanel", "#partner", "#ambassador", "#spon", "#sp", "#collab", "#gifted", "#freeproduct", "#comped", "#hosted"]
+    },
+    {
+      "id": "CH-DISC-02",
+      "name": "Disclosure placement in each content surface",
+      "source_sections": [2],
+      "summary": "Place disclosure near the endorsement and at the start/above the fold. For video, account for the spoken and visible endorsement in the corresponding script fields. A text prototype cannot verify actual prominence, duration, or audibility.",
+      "caption_first_lines": 2
+    },
+    {
+      "id": "CH-CONTEXT-01",
+      "name": "No misleading impartiality in competitor criticism",
+      "source_sections": [1],
+      "summary": "A creator connected to CHANEL should not imply an impartial opinion when criticizing a competitor. A neutral competitor mention alone is not a breach under this rule."
+    },
+    {
+      "id": "CH-CLAIM-01",
+      "name": "First-hand opinion and factual-claim evidence",
+      "source_sections": [3, 4],
+      "summary": "Endorsements of opinions require first-hand product use. Factual product claims should be supportable and verifiable. The prototype routes unverifiable claims to a human reviewer rather than declaring them false.",
+      "experience_cues": ["i tried", "i have used", "my experience", "my review", "i love", "i recommend", "i tested"],
+      "objective_claim_cues": ["clinically proven", "proven to", "lasts 24 hours", "the best", "number one", "guaranteed result"]
+    }
+  ]
+}

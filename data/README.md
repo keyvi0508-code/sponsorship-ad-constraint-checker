@@ -1,0 +1,13 @@
+# Evaluation dataset
+
+`primary_cases.jsonl` contains 30 fictional English short-video script instances written for this academic prototype: 10 `PASS`, 10 `FLAG`, and 10 `HUMAN_REVIEW`. They are not real CHANEL creator scripts, endorsements, or private campaign materials. The v2 labels are frozen; their SHA-256 checksum and date are recorded in [frozen_manifest.json](frozen_manifest.json).
+
+The first independent-label packet and later v2 packet are retained for audit history. The v2 return and adjudication are summarized in [the report](../reports/peer_review_return_v2_adjudication.md). A later targeted calibration identified possible label-boundary issues for two cases; these are discussed in [the targeted adjudication record](../reports/targeted_adjudication_return_v1.md). The frozen labels and reported scores were not silently changed. Reviewer identity/provenance was not supplied, so the returns must not be presented as verified independent inter-annotator reliability.
+
+The cases test disclosure wording and sponsor identity, disclosure placement across structured caption/speech/on-screen fields, competitor criticism, first-hand experience, and unsupported factual claims. The prototype removes `ground_truth` and `annotator_notes` before sending a case to either system. Results on this small, purpose-built set describe only these cases and do not establish real-world brand-review performance.
+
+The rule IDs used in the review packet are project identifiers mapped to the public CHANEL guide; they are not official CHANEL identifiers. Keep the private blind-ID mapping under `work/` local and do not publish it with the review packet.
+
+## Additional 30-case extension (pending review)
+
+`extension_cases_v1.jsonl` adds 10 cases per verdict class. The randomized [blind packet](extension_blind_review_packet_v1.md) and [blank response template](extension_review_response_template_v1.md) were returned for all 30 cases. Initial agreement was 21/30 (70.0%). The [adjudication report](../reports/extension_peer_review_adjudication_v1.md) records two label changes approved by the project owner; the resulting balanced v2 set is frozen in [extension_cases_v2.jsonl](extension_cases_v2.jsonl), with checksum in [extension_frozen_manifest_v2.json](extension_frozen_manifest_v2.json). The combined versioned 60-case file is [combined_cases_v3_60.jsonl](combined_cases_v3_60.jsonl), and [its manifest](combined_manifest_v3_60.json) records the development/holdout split and limitations. The [keyword baseline report](../reports/holdout_keyword_baseline_results.md) shows 20/30 (66.7%). The original extension, packet, and draft manifest remain for auditability. The private ID mapping is ignored by Git. The AI holdout evaluation is pending.

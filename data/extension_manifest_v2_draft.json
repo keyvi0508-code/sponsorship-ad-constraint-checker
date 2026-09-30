@@ -1,0 +1,18 @@
+{
+  "status": "DRAFT_PENDING_PROJECT_OWNER_SIGNOFF",
+  "created_on": "2026-09-30",
+  "cases_file": "data/extension_cases_v2_adjudicated_draft.jsonl",
+  "sha256": "c3865f5dbb43bb33b079016b836f0a531d323592fe04b807ea361c5dc9417945",
+  "n_cases": 30,
+  "class_counts": {
+    "PASS": 10,
+    "FLAG": 10,
+    "HUMAN_REVIEW": 10
+  },
+  "blind_review_packet": "data/extension_blind_review_packet_v1.md",
+  "blind_review_received": true,
+  "initial_draft_agreement": 0.7,
+  "post_adjudication_agreement": 0.7333333333333333,
+  "ai_evaluation_performed": false,
+  "note": "Draft adjudication only. Do not evaluate or describe as frozen gold labels until the project owner signs off."
+}

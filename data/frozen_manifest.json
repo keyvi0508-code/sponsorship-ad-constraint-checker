@@ -1,0 +1,14 @@
+{
+  "status": "FROZEN",
+  "frozen_on": "2026-09-29",
+  "cases_file": "data/primary_cases.jsonl",
+  "sha256": "cff65dc75a88a6aae1536758fcb67312b69574407ff255dcc7be7fa1b7ed3ac2",
+  "n_cases": 30,
+  "class_counts": {
+    "PASS": 10,
+    "FLAG": 10,
+    "HUMAN_REVIEW": 10
+  },
+  "human_review_completed": true,
+  "disagreements_resolved": true
+}

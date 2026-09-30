@@ -1,0 +1,17 @@
+{
+  "status": "REVIEW_RETURN_RECEIVED_ADJUDICATION_RECORDED",
+  "created_on": "2026-09-30",
+  "cases_file": "data/extension_cases_v1.jsonl",
+  "sha256": "8a2fca4e50b3b0805dd2f24aa8b306bdeb21ac2de3c5c191d20fb1d6c20d5edc",
+  "n_cases": 30,
+  "class_counts": {
+    "PASS": 10,
+    "FLAG": 10,
+    "HUMAN_REVIEW": 10
+  },
+  "blind_packet": "data/extension_blind_review_packet_v1.md",
+  "review_completed": true,
+  "initial_blind_agreement": 0.7,
+  "adjudication_report": "reports/extension_peer_review_adjudication_v1.md",
+  "freeze_note": "This v1 file preserves the pre-review draft labels for audit. Proposed label changes are in a separate v2 draft; do not use either file as frozen evaluation evidence until project-owner sign-off and a frozen manifest are issued."
+}
