@@ -70,3 +70,6 @@ Each prompt version writes to its own output file. If a run is interrupted, reru
 ## Source and use limits
 
 The source is CHANEL's official [Social Media Guidelines](https://www.chanel.com/us/makeup/social-media-guidelines/), accessed 2026-09-29. The prototype is an independent academic project, not affiliated with or approved by CHANEL. It reviews text fields supplied by the user; it cannot verify actual screen visibility, spoken audibility, or video timing. It supports human review and is not legal advice.
+
+
+For job applications, see the [portfolio positioning note](docs/portfolio_positioning.md), which describes the workbench workflow, relevant role fit, an honest interview narrative, and current product gaps.
