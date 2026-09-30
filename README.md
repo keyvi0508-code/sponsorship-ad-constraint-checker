@@ -73,3 +73,8 @@ The source is CHANEL's official [Social Media Guidelines](https://www.chanel.com
 
 
 For job applications, see the [portfolio positioning note](docs/portfolio_positioning.md), which describes the workbench workflow, relevant role fit, an honest interview narrative, and current product gaps.
+
+
+## Interactive review workbench
+
+Start the local interface with `python -m src.web_app`, then open `http://127.0.0.1:8765`. The saved example and keyword baseline make no API call. A live AI review displays a cost estimate and requires explicit confirmation before sending two paid model requests. The prototype does not save script drafts or reviewer decisions. See the [demo walkthrough](reports/demo_script.md) and [portfolio positioning note](docs/portfolio_positioning.md).
