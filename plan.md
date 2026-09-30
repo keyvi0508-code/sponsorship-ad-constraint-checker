@@ -39,6 +39,7 @@
 
 - [ ] Finalize the problem statement and business/technical trade-off analysis using the report draft.
 - [x] Prepare setup/run instructions and meaningful tests (19 tests pass in the current implementation checkpoint; rerun before final submission).
-- [ ] Record a concise demo showing the workflow and a contextual case where keyword search and AI differ.
-- [ ] Verify the course cover/self-appraisal requirement against NTU Learn before submission.
+- [x] Draft a concise English demo script showing HOLDOUT-03 and the workflow; recording the video remains open.
+- [x] Inspect NTU Learn's Course Project submission page: it has no written instructions; the separate A1 section lists a self-appraisal form, but the Course Project page does not state that it is required.
+- [ ] Confirm the final upload format/bundle because the Course Project submission page has no written instructions.
 - [ ] Review the repository for secrets, private material, source attribution, and polished README; confirm private GitHub sync, then make it public only after the user is ready.

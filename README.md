@@ -38,7 +38,7 @@ Each prompt version writes to its own output file. If a run is interrupted, reru
 - Business/technical trade-off analysis
 - Reproducible code and labeled evaluation data
 - Measured results, including false positives, false negatives, borderline handling, structured-output validity, and API cost per script
-- Recorded demo
+- Recorded demo (a concise [demo script](reports/demo_script.md) is prepared)
 - Self-appraisal/cover page if required by the course instructions
 
 ## Source and use limits
