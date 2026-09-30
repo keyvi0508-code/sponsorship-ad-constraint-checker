@@ -1,80 +1,58 @@
-# CHANEL Sponsorship Script Brand-Rule Checker
+# Creator Content Review Workbench
 
-An English-only course-project prototype that helps a human reviewer check a proposed sponsored-video script against CHANEL's publicly available creator guidelines. It compares an actually measured keyword-search baseline with an AI-assisted reviewer and routes ambiguous cases to a person.
+A human-in-the-loop review tool for sponsored creator scripts. It puts a fast, explainable keyword baseline beside an AI-assisted review, surfaces quoted evidence and uncertainty, and leaves the final disposition with a reviewer.
 
-## Scope
+This independent local prototype uses CHANEL's public [Social Media Guidelines](https://www.chanel.com/us/makeup/social-media-guidelines/) as a narrow example rule set. It is not affiliated with or approved by CHANEL and does not represent a brand's private campaign brief.
 
-The MVP focuses on disclosure wording and sponsor identity, placement represented in structured script fields, and contextual competitor criticism. It does not claim to know CHANEL's private campaign brief or required selling points. See [scope](scope.md), [decisions](decisions.md), [evaluation plan](plan.md), and [brand-source assessment](docs/brand_source_research.md).
+## The review workflow
 
-## Run the prototype
+1. Add caption, spoken copy, planned on-screen text, brand context, and first-hand product-use information.
+2. Run the free keyword baseline to catch literal signals.
+3. Optionally request an AI-assisted review to examine context and evidence. The interface displays a cost estimate and asks for confirmation first.
+4. Compare verdicts, evidence quotes, rule IDs, and rationales; route uncertain cases to a person.
+5. A reviewer records the final disposition. The model does not approve content.
 
-The project uses Python's standard library; no package installation is required. Python 3.9 or later is sufficient for the included commands.
+The current rule scope covers sponsorship disclosure, sponsor identity, disclosure placement represented in structured text fields, and potentially misleading competitor criticism.
 
-Run the automated checks and a deterministic baseline without making network or API calls:
+## Try the workbench
 
-```powershell
-python -m unittest discover -s tests -v
-python -m src.evaluate_baseline data/extension_cases_v2.jsonl
-```
+Python 3.9 or later is required. The app uses the standard library; no package installation is needed.
 
-Review one fictional script. By default, this validates the input and prints a conservative cost estimate; it does **not** call an API:
+    python -m src.web_app
 
-```powershell
-python -m src.review_one examples/review_case.json
-```
+Open http://127.0.0.1:8765. The saved example and keyword review work offline without an API call. Drafts and reviewer decisions are not saved. A live AI review sends two requests to OpenRouter and may incur a charge; it requires a local API key and explicit confirmation. Never place a key in a project file or commit it.
 
-An actual single-script review sends two model requests and can incur a charge. Configure an OpenRouter API key in your local environment, review the preflight estimate, and run the following only after approving the spend:
+For a no-call command-line review and cost preflight:
 
-```powershell
-python -m src.review_one examples/review_case.json --run-api --confirm-paid-run
-```
+    python -m src.review_one examples/review_case.json
 
-To save the result, add a new output path such as `--output reports/my_review.json`; existing files are never overwritten. The one-script command has a conservative default ceiling of US$0.10. See [the input schema and API design](docs/ai_api_design.md) before using a different script. Never put an API key in a project file or commit it.
+To run the model, review the estimate and add --run-api --confirm-paid-run. The single-script tool enforces a US$0.10 ceiling and does not overwrite existing result files. See [AI request and cost design](docs/ai_api_design.md).
 
-## Evaluation
+## Evaluation snapshot
 
-The project dataset has 60 English-language instances: 20 `PASS`, 20 `FLAG`, and 20 `HUMAN_REVIEW`, split into the original 30-case development set and a blind-reviewed 30-case extension. The original frozen v2 scores remain unchanged: keyword baseline 24/30 (80.0%), initial AI prompt 26/30 (86.7%), and revised development prompt 27/30 (90.0%) at an estimated US$0.213760. On the new extension, the keyword baseline scored 20/30 (66.7%) and the AI reviewer scored 23/30 (76.7%), with estimated AI token cost US$0.237478. See [the original-run analysis](reports/ai_evaluation_prompt_v1_results.md), [extension evaluation](reports/holdout_keyword_baseline_results.md), [combined data](data/combined_cases_v3_60.jsonl), and [extension adjudication report](reports/extension_peer_review_adjudication_v1.md). The revised prompt was shaped after reviewing initial errors, so report the extension as a prompt-locked development check, not a final independent benchmark. Reviewer identity was not provided, and two original-set label questions remain documented; all cases are synthetic and results are limited to this prototype.
+On a balanced 30-case synthetic extension, the AI reviewer scored **23/30 (76.7%)** and the measured keyword baseline scored **20/30 (66.7%)**. The AI flagged all 10 clear violations and made no FLAG decisions on clean cases. It routed 2 clean and 5 borderline cases to HUMAN_REVIEW.
 
-A separate, balanced 30-case extension was blind-reviewed and adjudicated. Initial reviewer agreement with draft labels was 21/30 (70.0%); after two documented label changes, agreement with the reviewer is 22/30 (73.3%). The extension is frozen as a new version. The keyword baseline scored 20/30 (66.7%) and AI scored 23/30 (76.7%); keep these results separate from the original development-set scores. See the [blind review and adjudication report](reports/extension_peer_review_adjudication_v1.md), [extension evaluation](reports/holdout_keyword_baseline_results.md), [frozen extension data](data/extension_cases_v2.jsonl), and [60-case combined data](data/combined_cases_v3_60.jsonl). The private blind-ID mapping is not included.
+These are small-sample development results, not evidence of production performance. The prompt had been revised after earlier outputs, and all scripts are fictional. This is a prompt-locked development check, not an independent benchmark or proof of real-world lift. See the [evaluation report](reports/holdout_keyword_baseline_results.md), [adjudication notes](reports/extension_peer_review_adjudication_v1.md), and [evaluation data guide](data/README.md).
 
-## Blind review and AI-run safety
+## Product boundaries
 
-The latest blind-label round used [review instructions](data/peer_review_instructions.md) and [blind packet v2](data/peer_review_packet_v2.md). Historical packets and comparisons remain in the repository for audit context. Reviewer identity/provenance was not supplied, so the returns are not presented as verified independent reliability evidence.
+- Text-only: it cannot verify actual video visibility, spoken audibility, or timing.
+- No team accounts, persistent review history, configurable rule editor, or campaign-platform integration.
+- No live-video, audio, image, multimodal, or real-time moderation.
+- The rules cover a narrow interpretation of public guidance; they do not establish legal compliance or private campaign requirements.
+- Local demo only; it has not been security-reviewed for multi-user use.
 
-For the remaining rule-scope questions, use the separate [targeted policy-calibration packet](data/targeted_adjudication_packet_v1.md). Share that file only; keep the private ID mapping in `work/targeted_adjudication_mapping_v1.json` out of the reviewer's copy.
+## Run checks
 
-The received response and proposed label treatment are recorded in [the targeted adjudication return](reports/targeted_adjudication_return_v1.md). The frozen v2 labels and scores remain unchanged pending project-owner sign-off.
+    python -m unittest discover -s tests -v
+    python -m src.evaluate_baseline data/extension_cases_v2.jsonl
 
-The current [course report draft](reports/course_report_draft.md) consolidates the problem, trade-offs, evaluation, results, and limitations. See the [PE6201 submission-readiness checklist](docs/course_submission_checklist.md) for the rubric mapping and remaining course-specific checks.
+## Project notes
 
-The batch evaluator uses separate Level 1 evidence extraction and Level 2 policy decision calls, constrained to structured outputs. A local dry run validates the primary 30-case input without calling an API:
+- [Product positioning and interview narrative](docs/portfolio_positioning.md)
+- [Product scope](scope.md) and [design decisions](decisions.md)
+- [Demo walkthrough](reports/demo_script.md)
+- [Source assessment](docs/brand_source_research.md)
+- [Course documentation](docs/course_submission_checklist.md) and [report draft](reports/course_report_draft.md)
 
-```powershell
-python -m src.evaluate_ai
-```
-
-The batch paid run uses OpenRouter's Responses API and defaults to `openai/gpt-6-sol`. It is blocked unless the data has a matching frozen manifest, an API key is set locally, the conservative cost preflight is within the US$1.50 ceiling, and the command includes `--run-api --confirm-paid-run`. For compatibility with the key already configured on the user's machine, `OPENAI_API_KEY` is also accepted as a fallback name. Never commit an API key. See [AI evaluation design](docs/ai_api_design.md) for the API and cost basis.
-
-Each prompt version writes to its own output file. If a run is interrupted, rerun the same command with `--resume`; completed cases are preserved and only missing cases are sent. The original development run and the extension run have both completed all 30 cases; results and their development-evidence caveat are summarized in the reports linked above.
-
-## Planned course deliverables
-
-- Problem statement and scope
-- Business/technical trade-off analysis
-- Reproducible code and labeled evaluation data
-- A single-script review command with a no-call default and explicit paid-run guard
-- Measured results, including false positives, false negatives, borderline handling, structured-output validity, and API cost per script
-- Recorded demo (a concise [demo script](reports/demo_script.md) is prepared)
-- Self-appraisal/cover page if required by the course instructions
-
-## Source and use limits
-
-The source is CHANEL's official [Social Media Guidelines](https://www.chanel.com/us/makeup/social-media-guidelines/), accessed 2026-09-29. The prototype is an independent academic project, not affiliated with or approved by CHANEL. It reviews text fields supplied by the user; it cannot verify actual screen visibility, spoken audibility, or video timing. It supports human review and is not legal advice.
-
-
-For job applications, see the [portfolio positioning note](docs/portfolio_positioning.md), which describes the workbench workflow, relevant role fit, an honest interview narrative, and current product gaps.
-
-
-## Interactive review workbench
-
-Start the local interface with `python -m src.web_app`, then open `http://127.0.0.1:8765`. The saved example and keyword baseline make no API call. A live AI review displays a cost estimate and requires explicit confirmation before sending two paid model requests. The prototype does not save script drafts or reviewer decisions. See the [demo walkthrough](reports/demo_script.md) and [portfolio positioning note](docs/portfolio_positioning.md).
+Course materials remain as supporting documentation; the workbench is the product being demonstrated.
