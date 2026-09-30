@@ -23,6 +23,7 @@
 - [x] Implement deterministic keyword search with documented patterns and rule mapping.
 - [x] Implement an AI reviewer using the same source-grounded rules and structured script; require schema-validated JSON.
 - [x] Keep Level 1 JSON assertions separate from Level 2 policy judgement.
+- [x] Add a single-script JSON entry point with schema validation, cost preflight, no-call default, explicit paid-run confirmation, and non-overwriting output.
 - [x] Use PASS, FLAG, and HUMAN_REVIEW with evidence and rule IDs.
 - [x] Keep API keys out of project files; capture provider/model, token usage, estimated cost, and pricing assumptions. Verify repository history and ignore rules again before public release.
 
@@ -41,5 +42,6 @@
 - [x] Prepare setup/run instructions and meaningful tests (19 tests pass in the current implementation checkpoint; rerun before final submission).
 - [x] Draft a concise English demo script showing HOLDOUT-03 and the workflow; recording the video remains open.
 - [x] Inspect NTU Learn's Course Project submission page: it has no written instructions; the separate A1 section lists a self-appraisal form, but the Course Project page does not state that it is required.
+- [x] Map current artifacts and open items to the four criteria in `docs/course_submission_checklist.md`.
 - [ ] Confirm the final upload format/bundle because the Course Project submission page has no written instructions.
 - [ ] Review the repository for secrets, private material, source attribution, and polished README; confirm private GitHub sync, then make it public only after the user is ready.
