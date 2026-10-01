@@ -1,5 +1,7 @@
 # Implementation and evaluation plan
 
+**Historical working plan.** Some checklist wording below records earlier project stages and is not a live submission status. For current deliverables and measured results, use [the product overview](docs/product_overview.md), [evaluation guide](reports/README.md), and [course submission checklist](docs/course_submission_checklist.md). The final report is in `docs/`.
+
 ## Stage 1 — scope and evidence
 
 - [x] User selected CHANEL and its public creator rules.
@@ -34,7 +36,7 @@
 
 - [x] Run both systems on the same frozen 30 instances with settings recorded.
 - [x] Report confusion matrices, class results, both error directions, and borderline escalation.
-- [x] Report structured-output validity and estimated API cost per script and overall. Actual provider billing still needs a dashboard check; latency/median were not captured and must not be invented.
+- [x] Report structured-output validity and estimated API cost per script and overall. Actual provider billing still needs a dashboard check. Per-case latency was later recovered from saved two-stage results and is reported as a median, not a service guarantee.
 - [x] Document representative disagreements, source access date, synthetic-data limits, prompt-tuning leakage, and the unresolved gold-label question.
 - [x] Measure the keyword baseline on the supplementary extension without tuning its patterns; it scored 20/30 (66.7%).
 - [x] Run the revised prompt on the frozen 30-case extension and report it separately: AI 23/30 (76.7%) versus keyword baseline 20/30 (66.7%). Describe it as supplementary development evidence, not as a real-world or representative benchmark.
@@ -42,10 +44,10 @@
 
 ## Stage 5 — course submission and portfolio
 
-- [ ] Finalize the problem statement and business/technical trade-off analysis using the report draft.
-- [x] Prepare setup/run instructions and meaningful tests (30 tests passed on 2026-09-30; rerun before final submission).
+- [x] Finalize the problem statement and business/technical trade-off analysis in the report.
+- [x] Prepare setup/run instructions and meaningful tests (31 tests passed on 2026-10-01).
 - [x] Draft a concise English demo script showing HOLDOUT-03 and the workflow; recording the video remains open.
 - [x] Inspect NTU Learn's Course Project submission page: it has no written instructions; the separate A1 section lists a self-appraisal form, but the Course Project page does not state that it is required.
 - [x] Map current artifacts and open items to the four criteria in `docs/course_submission_checklist.md`.
 - [ ] Confirm the final upload format/bundle because the Course Project submission page has no written instructions.
-- [ ] Review the repository for secrets, private material, source attribution, and polished README; confirm private GitHub sync, then make it public only after the user is ready.
+- [x] Review current files for key patterns, source attribution, and a product-oriented README; sync the current report and documentation to the private GitHub repository. A full history review and the user's readiness decision remain necessary before any public release.

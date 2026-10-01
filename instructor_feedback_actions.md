@@ -1,6 +1,6 @@
 # Instructor feedback translated into project actions
 
-This document records the actionable feedback received on the proposal. It is a project checklist, not an additional course instruction.
+This document records the actionable feedback received on the proposal. It is a project checklist, not an additional course instruction. For the current outcome and remaining submission work, see the [final checklist](docs/course_submission_checklist.md). Historical plans below do not claim an independent test: the prompt was revised after examining early outcomes.
 
 | Feedback | Project response |
 |---|---|
@@ -14,5 +14,5 @@ This document records the actionable feedback received on the proposal. It is a 
 ## Reporting discipline
 
 - Keep the primary 30-case results separate from any development or stress-test data.
-- Do not tune prompts against the final primary set after looking at its results. If iteration is needed, create a separate development set and document the change.
+- Preserve both the initial and tuned runs and disclose that prompt revision followed inspection of earlier results; neither run is an independent final benchmark. Future tuning should use a separate development set and a fresh untouched test.
 - Report limitations and failure examples, not only aggregate accuracy.
