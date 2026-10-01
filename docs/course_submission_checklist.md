@@ -1,13 +1,13 @@
 # PE6201 Course Project readiness checklist
 
-This checklist maps the current project artifacts to the four criteria in the instructor's Project Proposal Watchouts. The Course Project page in NTU Learn currently has no written submission instructions, so this is a preparation map, not a claim about the required upload format.
+This checklist maps the project to the four rubric weights cited in the instructor's Project Proposal Watchouts and to the **1 October 2026 NTU Learn announcement** clarifying final deliverables. It is a preparation map; check the final upload controls in NTU Learn before submitting.
 
 | Course criterion | Weight in Watchouts | Evidence in this project | Remaining check |
 |---|---:|---|---|
-| Problem Statement & Significance | 15% | `reports/course_report_draft.md` sections 1–2; `scope.md`; problem-statement template was previously submitted as a milestone | Confirm whether the final portal expects an updated problem statement as a separate file |
-| Business & Technical Trade-offs | 25% | Report section 3; measured Ctrl+F-style keyword baseline; estimated API cost and observed wait; build-versus-rent choice; human-review workflow | Check actual provider billing and keep the two-call versus one-call trade-off explicit |
-| Implementation — code & repository | 35% | `src/`, `tests/`, a primary balanced 30-case set plus a separately reported 30-case extension, frozen manifests, saved AI and baseline results, README run instructions | Run tests on a clean environment; inspect secrets, ignored files, and repository history before any public release |
-| Demonstration & Communication | 25% | `reports/demo_script.md`; saved `HOLDOUT-03` AI and baseline results; explicit campaign-brief gap; local decision export; README quick start | Record the demo; show both methods and limitations without exposing credentials or making an unapproved API call |
+| Problem Statement & Significance | 15% | Final report's user and scope; [`product_overview.md`](product_overview.md) persona and input/output | Real reviewer volume, review time, and business pain remain unmeasured; state that plainly |
+| Business & Technical Trade-offs | 25% | Measured keyword baseline; saved token cost and wait; two-call choice; human final decision | Explain that a one-call alternative and reviewer labour cost were not measured |
+| Implementation — code & repository | 35% | `src/`, `tests/`, balanced primary and extension data, frozen manifests, saved results, [`data/README.md`](../data/README.md), [`reports/README.md`](../reports/README.md), and README run instructions | Check a fresh run and make the source accessible to the marker |
+| Demonstration & Communication | 25% | Final report; [`demo_script.md`](../reports/demo_script.md); saved no-call example and reviewer export | Record and upload the face-plus-screen demo; speak to limits and uncertainty |
 
 ## Current evidence and caveats
 
@@ -21,10 +21,11 @@ This checklist maps the current project artifacts to the four criteria in the in
 
 ## Finalization sequence
 
-1. Re-run `python -m unittest discover -s tests -v` and the no-call command `python -m src.review_one examples/review_case.json`.
-2. Record the demo from the saved outputs and follow `reports/demo_script.md`.
-3. Check the OpenRouter usage dashboard and replace estimates only if an actual billed amount is visible.
-4. Ask the instructor or check a later NTU Learn update for the final upload format and whether the self-appraisal form is required. The current Course Project page does not answer either question.
-5. Before changing the repository visibility, scan the complete Git history and working files for keys, private blind-ID mappings, and materials the reviewer did not consent to publish.
+1. Deliver a well-structured report near **1,200 words** (about 1,020–1,380 allowed), including outcome, reasoning, performance and eval critique, difficulties, tuning, and rough edges. The DOCX/PDF submission copy is maintained outside this repository.
+2. Record and upload a **2–8 minute video**, aiming near five minutes, with the presenter’s face and computer/mobile screen visible together. Content after eight minutes may not be watched.
+3. Keep case files, evaluation code, saved outputs, data and evaluation explainers, persona, input/output, architecture box diagram, and observed-versus-prospective metrics in the repository.
+4. Re-run `python -m unittest discover -s tests -v` and `python -m src.review_one examples/review_case.json`; both are no-call checks. Verify that the marker can access the repository or include a source archive.
+5. Check the final NTU Learn upload controls and ensure the report, video, data/evals, and code are actually checked in before **4 October 2026, 23:59 Singapore time**.
+6. Before changing repository visibility, scan complete history and working files for keys, blind-ID mappings, and materials the reviewer did not consent to publish. The repository is intentionally private until this review is complete.
 
-The repository is intentionally still private while those checks remain open.
+The 1 October announcement does not itself specify whether final files must be uploaded separately, linked, or zipped. Confirm this in the Course Project submission UI.
