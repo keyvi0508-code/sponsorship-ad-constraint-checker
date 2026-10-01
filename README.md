@@ -12,9 +12,9 @@ This is an independent, local prototype based on CHANEL's publicly available [So
 2. Run the free keyword baseline to catch literal signals.
 3. Optionally request an AI-assisted review to examine context and evidence. The interface shows a cost estimate and asks for confirmation first.
 4. Compare verdicts, quoted evidence, rule IDs, and rationales. Ambiguous cases can be escalated.
-5. A person records the final disposition; the model does not approve content.
+5. A person records the final disposition and can download a local JSON review record containing the script, policy source, both available checks, evidence, decision, and timestamps. The model does not approve content.
 
-The prototype currently focuses on sponsorship disclosure, sponsor identity, disclosure placement represented in structured text fields, and potentially misleading competitor criticism.
+The prototype currently focuses on sponsorship disclosure, sponsor identity, disclosure placement represented in structured text fields, and potentially misleading competitor criticism. No private campaign brief has been supplied, so mandatory selling points are explicitly **not evaluated**; a `PASS` covers only the supported public-guideline checks.
 
 ## Try the workbench
 
@@ -24,7 +24,7 @@ Python 3.9 or later is required. The app uses the Python standard library; no pa
 python -m src.web_app
 ```
 
-Open `http://127.0.0.1:8765`. The saved example and keyword review work offline without an API call. Drafts and reviewer decisions are not saved. A live AI review sends two requests to OpenRouter and may incur a charge; it requires an API key and explicit confirmation. Never place a key in a project file or commit it.
+Open `http://127.0.0.1:8765`. The saved example and keyword review work offline without an API call. Drafts and reviewer decisions remain in this browser session unless the reviewer explicitly downloads the JSON record; nothing is stored on the server. A live AI review sends two requests to OpenRouter and may incur a charge; it requires an API key and explicit confirmation. Never place a key in a project file or commit it.
 
 For a no-call command-line review and its cost preflight:
 
@@ -39,6 +39,8 @@ To run the model, review the printed estimate and use `--run-api --confirm-paid-
 The primary balanced 30-case synthetic set scored **27/30 (90.0%)** for the revised AI reviewer and **24/30 (80.0%)** for the measured keyword baseline. A separate 30-case synthetic extension scored **23/30 (76.7%)** for AI and **20/30 (66.7%)** for the baseline. Keep the splits separate; the extension is supplementary development evidence, not a real-world benchmark.
 
 The examples are fictional, and the prompt was revised after an earlier run. A later 11-case blind review and [rule-by-rule adjudication](reports/boundary_case_adjudication_v1.md) identified four proposed overall label changes and one additional rule ID. The scores above still use the original frozen labels; no revised score is claimed. The [sensitivity analysis](reports/label_adjudication_sensitivity_v1.md) shows exactly how retrospective relabeling would change the saved scores and why that is not an independent benchmark. These small-sample results describe the constructed cases and do not establish real-world performance or prove that AI is generally better. See the [evaluation report](reports/holdout_keyword_baseline_results.md), [data guide](data/README.md), and [submission evaluation plan](docs/evaluation_redesign_protocol.md).
+
+On the extension run, estimated token cost was **US$0.00792 per script** and observed two-call latency was **10.72 seconds median** (30 saved cases). The workbench shows these historical figures, the live preflight cost ceiling, and each available result's measured cost and latency. Pricing is a dated estimate, not a provider invoice; observed latency is not a service guarantee.
 
 ## Product boundaries
 
