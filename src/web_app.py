@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from statistics import median
 from typing import Any, Dict
 from urllib.parse import urlparse
 
@@ -27,10 +28,8 @@ def sample_payload() -> Dict[str, Any]:
     reference_verdict = labeled_case["ground_truth"]["verdict"]
     case = {key: value for key, value in labeled_case.items() if key not in {"ground_truth", "annotator_notes", "dataset_split"}}
     baseline = review_with_keyword_baseline(case)
-    ai_result = next(
-        json.loads(line) for line in AI_RESULTS_PATH.read_text(encoding="utf-8").splitlines()
-        if line.strip() and json.loads(line).get("case_id") == case["case_id"]
-    )
+    ai_results = [json.loads(line) for line in AI_RESULTS_PATH.read_text(encoding="utf-8").splitlines() if line.strip()]
+    ai_result = next(result for result in ai_results if result.get("case_id") == case["case_id"])
     summary = json.loads(AI_SUMMARY_PATH.read_text(encoding="utf-8"))
     return {
         "case": case,
@@ -43,6 +42,7 @@ def sample_payload() -> Dict[str, Any]:
             "ai_human_review": 7,
             "cases": summary["n_cases"],
             "estimated_cost_per_case_usd": summary["estimated_cost_per_case_usd"],
+            "median_ai_latency_seconds": round(median(result["latency_seconds"] for result in ai_results), 2),
         },
         "mode": "saved_demo_no_api_call",
     }
