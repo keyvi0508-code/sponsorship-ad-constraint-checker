@@ -4,5 +4,4 @@
 .venv/
 __pycache__/
 *.py[cod]
-work/targeted_adjudication_mapping_v1.json
-work/extension_mapping_v1.json
+work/
