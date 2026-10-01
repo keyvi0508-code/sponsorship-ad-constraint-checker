@@ -20,6 +20,8 @@ Keep one review workflow and load a separate policy pack for each brand. The wor
 
 Shared output labels do not make the underlying rules interchangeable. A result should identify the selected brand, policy-pack version, and rule IDs that support it.
 
+Campaign-specific mandatory selling points belong to a separately supplied, approved campaign brief, not the public brand guideline pack. The current workbench has no such brief; it displays `Not provided / mandatory selling points not evaluated` and includes that status in the exported review record. A public-guideline `PASS` must not be interpreted as campaign approval. A future brief workflow would require the brand owner to provide the exact requirements, effective campaign, and approval/version information before those checks can run.
+
 ## Minimum policy-pack record
 
 Before a brand can be enabled, its pack should record:

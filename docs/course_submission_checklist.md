@@ -5,9 +5,9 @@ This checklist maps the current project artifacts to the four criteria in the in
 | Course criterion | Weight in Watchouts | Evidence in this project | Remaining check |
 |---|---:|---|---|
 | Problem Statement & Significance | 15% | `reports/course_report_draft.md` sections 1–2; `scope.md`; problem-statement template was previously submitted as a milestone | Confirm whether the final portal expects an updated problem statement as a separate file |
-| Business & Technical Trade-offs | 25% | Report section 3; measured Ctrl+F-style keyword baseline; estimated API cost; build-versus-rent choice; human-review workflow | Check actual provider billing and keep the two-call versus one-call trade-off explicit |
+| Business & Technical Trade-offs | 25% | Report section 3; measured Ctrl+F-style keyword baseline; estimated API cost and observed wait; build-versus-rent choice; human-review workflow | Check actual provider billing and keep the two-call versus one-call trade-off explicit |
 | Implementation — code & repository | 35% | `src/`, `tests/`, a primary balanced 30-case set plus a separately reported 30-case extension, frozen manifests, saved AI and baseline results, README run instructions | Run tests on a clean environment; inspect secrets, ignored files, and repository history before any public release |
-| Demonstration & Communication | 25% | `reports/demo_script.md`; saved `HOLDOUT-03` AI and baseline results; README quick start | Record the demo; show both methods and limitations without exposing credentials or making an unapproved API call |
+| Demonstration & Communication | 25% | `reports/demo_script.md`; saved `HOLDOUT-03` AI and baseline results; explicit campaign-brief gap; local decision export; README quick start | Record the demo; show both methods and limitations without exposing credentials or making an unapproved API call |
 
 ## Current evidence and caveats
 
