@@ -47,6 +47,9 @@ class WebWorkbenchTests(unittest.TestCase):
         self.assertEqual(payload["baseline"]["verdict"], "PASS")
         self.assertEqual(payload["ai"]["verdict"], "HUMAN_REVIEW")
         self.assertEqual(payload["reference_verdict"], "HUMAN_REVIEW")
+        self.assertEqual(payload["metrics"]["median_ai_latency_seconds"], 10.72)
+        self.assertGreater(payload["ai"]["latency_seconds"], 0)
+        self.assertGreater(payload["ai"]["estimated_cost_usd"], 0)
 
     def test_workbench_is_served_locally_without_remote_font_dependencies(self):
         with urlopen(self.base_url + "/", timeout=2) as response:
@@ -58,6 +61,9 @@ class WebWorkbenchTests(unittest.TestCase):
         self.assertIn("Do not use it for another sponsor brand", page)
         self.assertIn("not an independent or real-world estimate", page)
         self.assertIn("not independently verified", page)
+        self.assertIn("Mandatory selling points are not evaluated", page)
+        self.assertIn("Export review record (.json)", page)
+        self.assertIn("Observed AI wait", page)
 
     def test_findings_link_to_the_source_guideline(self):
         with urlopen(self.base_url + "/app.js", timeout=2) as response:
