@@ -54,6 +54,17 @@ class WebWorkbenchTests(unittest.TestCase):
         self.assertIn("Creator content review", page)
         self.assertIn("/styles.css", page)
         self.assertNotIn("fonts.googleapis.com", page)
+        self.assertIn("Policy scope: CHANEL only", page)
+        self.assertIn("Do not use it for another sponsor brand", page)
+        self.assertIn("not an independent or real-world estimate", page)
+        self.assertIn("not independently verified", page)
+
+    def test_findings_link_to_the_source_guideline(self):
+        with urlopen(self.base_url + "/app.js", timeout=2) as response:
+            app = response.read().decode("utf-8")
+        self.assertIn("CHANEL guide §", app)
+        self.assertIn("CH-CONTEXT-01", app)
+        self.assertIn("https://www.chanel.com/us/makeup/social-media-guidelines/", app)
 
     def test_ai_preflight_returns_estimate_without_calling_model(self):
         from src.web_app import sample_payload
