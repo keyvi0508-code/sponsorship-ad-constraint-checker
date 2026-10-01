@@ -4,7 +4,7 @@
 
 Independently label these 30 fictional English short-video scripts before comparing your decisions with the project author's draft labels. The CHANEL page may render without its body text in some browsers. The self-contained, project-written rule summaries below are paraphrases of the numbered sections on CHANEL's public [Social Media Guidelines](https://www.chanel.com/us/makeup/social-media-guidelines/) (accessed 2026-09-29). The page is the source of the rules, but it may not load reliably for every reviewer.
 
-These scripts are synthetic academic examples, not actual CHANEL campaigns or creator posts. This project is not affiliated with CHANEL and is not legal advice.
+These scripts are synthetic evaluation examples, not actual CHANEL campaigns or creator posts. This project is not affiliated with CHANEL and is not legal advice.
 
 ## Project rulebook and source mapping
 

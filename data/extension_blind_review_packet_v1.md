@@ -2,7 +2,7 @@
 
 ## Instructions
 
-Independently assign each fictional English short-video script one verdict: `PASS`, `FLAG`, or `HUMAN_REVIEW`. Record applicable project rule IDs and a brief rationale tied to exact script evidence. Do not infer facts not supplied. These cases are synthetic academic examples, not actual CHANEL campaigns. The project is not affiliated with CHANEL.
+Independently assign each fictional English short-video script one verdict: `PASS`, `FLAG`, or `HUMAN_REVIEW`. Record applicable project rule IDs and a brief rationale tied to exact script evidence. Do not infer facts not supplied. These cases are synthetic evaluation examples, not actual CHANEL campaigns. The project is not affiliated with CHANEL.
 
 ## Source-grounded project rules
 
