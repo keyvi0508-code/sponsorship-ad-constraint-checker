@@ -51,4 +51,4 @@ Every new policy pack needs its own source review, operational guide, independen
 
 ## Current implementation status
 
-This is a product architecture direction, not a claim that multi-brand support is implemented. The local demo has no policy selector, policy editor, tenant isolation, or multi-brand evaluation. The course submission remains focused on the CHANEL pack, consistent with its scope.
+This is a product architecture direction, not a claim that multi-brand support is implemented. The local prototype has no policy selector, policy editor, tenant isolation, or multi-brand evaluation. Current evidence covers only the CHANEL pack.
