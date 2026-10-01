@@ -5,6 +5,13 @@ const ids = {
 };
 let savedReference = null;
 let isSavedExample = false;
+const POLICY_SOURCE = 'https://www.chanel.com/us/makeup/social-media-guidelines/';
+const RULE_SECTIONS = {
+  'CH-DISC-01': '1–2',
+  'CH-DISC-02': '2',
+  'CH-CONTEXT-01': '1',
+  'CH-CLAIM-01': '3–4',
+};
 
 function toast(message) {
   const element = $('#toast');
@@ -50,12 +57,24 @@ function addFinding(parent, finding) {
   const card = document.createElement('div');
   card.className = 'finding';
   const rule = document.createElement('strong');
-  rule.textContent = finding.rule_id || 'REVIEW NOTE';
+  const ruleId = finding.rule_id || '';
+  rule.textContent = ruleId || 'REVIEW NOTE';
+  card.append(rule);
+  if (ruleId && RULE_SECTIONS[ruleId]) {
+    const source = document.createElement('a');
+    source.className = 'finding-source';
+    source.href = POLICY_SOURCE;
+    source.target = '_blank';
+    source.rel = 'noopener noreferrer';
+    source.textContent = `CHANEL guide §${RULE_SECTIONS[ruleId]}`;
+    source.setAttribute('aria-label', `Open CHANEL Social Media Guidelines, source section ${RULE_SECTIONS[ruleId]}`);
+    card.append(source);
+  }
   const quote = document.createElement('blockquote');
   quote.textContent = finding.evidence || 'No quoted evidence';
   const rationale = document.createElement('small');
   rationale.textContent = finding.rationale || finding.action || '';
-  card.append(rule, quote, rationale);
+  card.append(quote, rationale);
   parent.append(card);
 }
 
@@ -188,7 +207,7 @@ $('#load-sample-nav').addEventListener('click', loadSample);
 $('#baseline-button').addEventListener('click', runBaseline);
 $('#ai-button').addEventListener('click', runAI);
 $('#show-reference').addEventListener('click', showReference);
-$('#show-limits').addEventListener('click', () => toast('30 synthetic extension cases; revised prompt; development evidence only.'));
+$('#show-limits').addEventListener('click', () => toast('30 synthetic extension cases; the prompt was revised after earlier results; not an independent or real-world estimate.'));
 $('#record-decision').addEventListener('click', () => {
   if (!$('#reviewer-decision').value) return toast('Choose a human disposition first.');
   toast('Decision noted for this session only; it is not saved or sent.');
