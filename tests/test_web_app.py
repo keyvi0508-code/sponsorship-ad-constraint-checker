@@ -1,3 +1,5 @@
+"""Exercise the local review interface, saved demo, and paid-call confirmation."""
+
 import json
 import sys
 import threading

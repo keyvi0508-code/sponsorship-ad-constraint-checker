@@ -1,3 +1,5 @@
+"""Verify deterministic keyword decisions on disclosure and context examples."""
+
 import sys
 import unittest
 from pathlib import Path

@@ -1,3 +1,5 @@
+"""Check dataset balance, gold-label exclusion, and no-call command behavior."""
+
 import sys
 import json
 import unittest
