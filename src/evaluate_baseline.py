@@ -1,4 +1,4 @@
-"""Score the keyword baseline on the frozen primary set."""
+"""Score the keyword baseline on a balanced, frozen 30-case dataset."""
 from __future__ import annotations
 
 import argparse

@@ -1,4 +1,4 @@
-"""Loading and validation for the ground-truth primary dataset."""
+"""Load and validate scripts, labelled datasets, and model-safe inputs."""
 from __future__ import annotations
 
 import json
