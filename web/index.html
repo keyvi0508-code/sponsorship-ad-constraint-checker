@@ -12,6 +12,13 @@
     .policy-scope span,.scope-limit{color:#777d98}
     .scope-limit{font-size:9px;line-height:1.5;margin:8px 0 0}
     .finding-source{float:right;font-size:8px;font-weight:600;color:#5261bb;text-decoration:underline;text-underline-offset:2px}
+    .metric-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+    .campaign-scope{display:flex;flex-direction:column;gap:4px;margin:0 0 12px;padding:10px 11px;border:1px solid #f0e3c8;border-radius:8px;background:#fffaf0;color:#805f22;font-size:10px;line-height:1.45}
+    .campaign-scope span{color:#8b7958}
+    .export-row{display:flex;align-items:center;justify-content:space-between;gap:9px;margin-top:9px;font-size:9px;color:#727783}
+    .export-row .button:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+    @media(max-width:1120px){.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:700px){.export-row{align-items:stretch;flex-direction:column}}
   </style>
   <script src="/app.js" defer></script>
 </head>
@@ -53,6 +60,7 @@
         <article class="metric-card"><div class="metric-label">Keyword baseline</div><div class="metric-main"><strong id="baseline-accuracy">—</strong><span class="metric-chip muted-chip">Ctrl+F-style</span></div><div class="metric-foot">Measured on the same cases</div></article>
         <article class="metric-card"><div class="metric-label">Routed to a person</div><div class="metric-main"><strong id="human-rate">—</strong><span class="metric-chip amber-chip">Abstention</span></div><div class="metric-foot">7 cases, including 2 clean</div></article>
         <article class="metric-card"><div class="metric-label">Estimated AI cost</div><div class="metric-main"><strong id="estimated-cost">—</strong><span class="metric-chip muted-chip">per script</span></div><div class="metric-foot">Token estimate, not an invoice</div></article>
+        <article class="metric-card"><div class="metric-label">Observed AI wait</div><div class="metric-main"><strong id="median-latency">—</strong><span class="metric-chip muted-chip">median</span></div><div class="metric-foot">30 saved extension reviews · two calls</div></article>
       </section>
 
       <div class="evidence-note"><span class="info-icon">i</span><div><strong>Evaluation snapshot, not a performance guarantee</strong><span>Small synthetic datasets; the prompt was revised after earlier results. The extension result is development evidence, not an independent or real-world estimate.</span></div><button type="button" class="text-button" id="show-limits">Why this matters</button></div>
@@ -61,6 +69,7 @@
         <article class="panel draft-panel">
           <div class="panel-heading"><div><p class="eyebrow">01 / SUBMISSION</p><h2>Script draft</h2></div><span class="draft-status"><span class="tiny-dot"></span>Ready to review</span></div>
           <div class="policy-scope"><strong>Policy scope: CHANEL only</strong><span>This review uses the CHANEL U.S. public-guideline interpretation accessed 29 Sep 2026. Do not use it for another sponsor brand; no other brand is configured.</span></div>
+          <div class="campaign-scope"><strong>Campaign brief: Not provided</strong><span>Mandatory selling points are not evaluated. A PASS applies only to the supported public-guideline checks; it does not approve a campaign brief.</span></div>
           <label class="field-label" for="case-id">Case name <span>Internal reference</span></label>
           <input class="text-input" id="case-id" value="DEMO-01" maxlength="60">
           <label class="field-label" for="caption">Caption <span>One line per caption line</span></label>
@@ -77,7 +86,7 @@
             <button class="button button-primary" id="baseline-button" type="button"><span class="button-icon">⌕</span> Run keyword check</button>
             <button class="button button-ai" id="ai-button" type="button"><span>✦</span> Request AI review</button>
           </div>
-          <p class="microcopy">Keyword review is free. AI review makes two API calls and asks you to confirm the estimated cost first.</p>
+          <p class="microcopy">Keyword review is free. AI review makes two API calls and asks you to confirm a conservative cost ceiling first. The observed wait above is historical, not a guarantee.</p>
           <p class="scope-limit">Text-only review. The selected product-use status is supplied context, not independently verified. This tool cannot inspect finished-video visibility, duration, or audibility.</p>
         </article>
 
@@ -92,7 +101,8 @@
           <div class="reviewer-section">
             <div class="reviewer-heading"><span class="reviewer-icon">✓</span><div><strong>Human decision</strong><small>Reviewer remains accountable for approval.</small></div></div>
             <div class="reviewer-controls"><select id="reviewer-decision" aria-label="Reviewer decision"><option value="">Select final disposition</option><option>Approve</option><option>Request edits</option><option>Escalate</option></select><input id="reviewer-note" type="text" placeholder="Add a short rationale (optional)"><button class="button button-small" id="record-decision" type="button">Record locally</button></div>
-            <p class="microcopy">This prototype does not persist reviewer decisions.</p>
+            <div class="export-row"><span id="decision-status" role="status">No final decision recorded.</span><button class="button button-small" id="export-review" type="button" disabled>Export review record (.json)</button></div>
+            <p class="microcopy">The record stays in this browser session until you download it. The downloaded file includes the script and review details; handle it as potentially sensitive content. Nothing is saved to this server.</p>
           </div>
           <div id="reference-label" class="reference-label hidden"></div>
         </article>

@@ -4,8 +4,10 @@ const ids = {
   multipleBrands: $('#multiple-brands'), productUse: $('#product-use'),
 };
 let savedReference = null;
-let isSavedExample = false;
+let reviewState = { caseSnapshot: null, baseline: null, ai: null, final: null };
+let observedMedianSeconds = null;
 const POLICY_SOURCE = 'https://www.chanel.com/us/makeup/social-media-guidelines/';
+const POLICY_ACCESSED = '2026-09-29';
 const RULE_SECTIONS = {
   'CH-DISC-01': '1–2',
   'CH-DISC-02': '2',
@@ -44,6 +46,27 @@ function currentCase() {
     creator_used_product: used === 'unknown' ? null : used === 'true',
     claim_reference_sources: [],
   };
+}
+
+function clearDecision() {
+  reviewState.final = null;
+  $('#reviewer-decision').value = '';
+  $('#reviewer-note').value = '';
+  $('#decision-status').textContent = 'No final decision recorded.';
+  $('#export-review').disabled = true;
+}
+
+function invalidateDecision() {
+  if (!reviewState.final) return;
+  reviewState.final = null;
+  $('#decision-status').textContent = 'Decision changed; record it again.';
+  $('#export-review').disabled = true;
+}
+
+function aiSummary(result, source) {
+  const cost = Number.isFinite(result.estimated_cost_usd) ? ` · est. $${result.estimated_cost_usd.toFixed(4)}` : '';
+  const wait = Number.isFinite(result.latency_seconds) ? ` · ${result.latency_seconds.toFixed(1)}s observed` : '';
+  return `${source} · ${result.model || 'AI reviewer'}${cost}${wait}`;
 }
 
 function setVerdict(target, verdict, description) {
@@ -118,6 +141,8 @@ function applyMetrics(metrics) {
   $('#baseline-accuracy').textContent = `${(metrics.baseline_accuracy * 100).toFixed(1)}%`;
   $('#human-rate').textContent = `${((metrics.ai_human_review / metrics.cases) * 100).toFixed(1)}%`;
   $('#estimated-cost').textContent = `$${metrics.estimated_cost_per_case_usd.toFixed(4)}`;
+  observedMedianSeconds = metrics.median_ai_latency_seconds;
+  $('#median-latency').textContent = `${observedMedianSeconds.toFixed(2)}s`;
 }
 
 async function loadSample() {
@@ -127,15 +152,22 @@ async function loadSample() {
     if (!response.ok) throw new Error(data.error || 'Could not load saved example');
     applyCase(data.case);
     applyMetrics(data.metrics);
+    const loadedAt = new Date().toISOString();
+    reviewState = {
+      caseSnapshot: JSON.stringify(currentCase()),
+      baseline: { source: 'saved_demo', displayed_at: loadedAt, result: data.baseline },
+      ai: { source: 'saved_api_output', displayed_at: loadedAt, result: data.ai },
+      final: null,
+    };
+    clearDecision();
     setVerdict('baseline', data.baseline.verdict, 'Deterministic keyword-pattern result.');
     renderFindings('baseline', data.baseline.findings);
-    setVerdict('ai', data.ai.verdict, `Saved two-stage result · ${data.ai.model || 'AI reviewer'}`);
+    setVerdict('ai', data.ai.verdict, aiSummary(data.ai, 'Saved two-stage result'));
     renderFindings('ai', data.ai.findings);
     savedReference = data.reference_verdict;
     $('#reference-label').classList.add('hidden');
     $('#show-reference').classList.remove('hidden');
     $('#mode-badge').textContent = 'SAVED DEMO · NO API';
-    isSavedExample = true;
     showResults();
     toast('Loaded saved case HOLDOUT-03. No API call was made.');
   } catch (error) {
@@ -154,7 +186,13 @@ async function requestJson(route, payload) {
 
 async function runBaseline() {
   try {
-    const result = await requestJson('/api/baseline', { case: currentCase() });
+    const caseData = currentCase();
+    const snapshot = JSON.stringify(caseData);
+    const result = await requestJson('/api/baseline', { case: caseData });
+    if (snapshot !== JSON.stringify(currentCase())) return toast('Draft changed while reviewing; run the check again.');
+    if (reviewState.caseSnapshot !== snapshot) reviewState = { caseSnapshot: snapshot, baseline: null, ai: null, final: null };
+    clearDecision();
+    reviewState.baseline = { source: 'local_keyword_check', reviewed_at: new Date().toISOString(), result: result.baseline };
     setVerdict('baseline', result.baseline.verdict, 'Deterministic keyword-pattern result.');
     renderFindings('baseline', result.baseline.findings);
     $('#mode-badge').textContent = 'LOCAL KEYWORD CHECK';
@@ -166,15 +204,23 @@ async function runBaseline() {
 async function runAI() {
   try {
     const caseData = currentCase();
+    const snapshot = JSON.stringify(caseData);
     const preflight = await requestJson('/api/preflight', { case: caseData });
+    if (snapshot !== JSON.stringify(currentCase())) return toast('Draft changed; request a new cost estimate.');
+    const waitContext = Number.isFinite(observedMedianSeconds)
+      ? ` In the saved 30-case run, the median wait was ${observedMedianSeconds.toFixed(2)} seconds; this is not a live-time guarantee.` : '';
     const approved = window.confirm(
-      `This AI review sends two requests to ${preflight.model}. The conservative cost estimate is up to US$${preflight.conservative_cost_upper_bound_usd.toFixed(4)} for this script (the provider's actual charge may differ). Proceed?`
+      `This AI review sends two requests to ${preflight.model}. The conservative cost ceiling is US$${preflight.conservative_cost_upper_bound_usd.toFixed(4)} for this script (the provider's actual charge may differ).${waitContext} Proceed?`
     );
     if (!approved) return;
     $('#ai-button').disabled = true;
     $('#ai-button').textContent = 'Reviewing…';
     const result = await requestJson('/api/review', { case: caseData, confirm_paid_run: true });
-    setVerdict('ai', result.ai.verdict, `${result.ai.model} · est. $${result.ai.estimated_cost_usd.toFixed(4)}`);
+    if (snapshot !== JSON.stringify(currentCase())) return toast('Paid review completed, but the draft changed. Result not attached to this draft.');
+    if (reviewState.caseSnapshot !== snapshot) reviewState = { caseSnapshot: snapshot, baseline: null, ai: null, final: null };
+    clearDecision();
+    reviewState.ai = { source: 'live_api', reviewed_at: new Date().toISOString(), result: result.ai };
+    setVerdict('ai', result.ai.verdict, aiSummary(result.ai, 'Live API result'));
     renderFindings('ai', result.ai.findings);
     $('#mode-badge').textContent = 'LIVE API REVIEW';
     savedReference = null;
@@ -190,8 +236,9 @@ async function runAI() {
 }
 
 function markDraftChanged() {
-  if (!isSavedExample) return;
-  isSavedExample = false;
+  if (reviewState.caseSnapshot === JSON.stringify(currentCase())) return;
+  reviewState = { caseSnapshot: null, baseline: null, ai: null, final: null };
+  clearDecision();
   savedReference = null;
   $('#show-reference').classList.add('hidden');
   $('#reference-label').classList.add('hidden');
@@ -202,16 +249,70 @@ function markDraftChanged() {
   $('#mode-badge').textContent = 'UNSAVED DRAFT';
 }
 
+function recordDecision() {
+  if (!reviewState.baseline && !reviewState.ai) return toast('Run a review before recording a decision.');
+  if (reviewState.caseSnapshot !== JSON.stringify(currentCase())) return toast('Draft changed; review this version first.');
+  const disposition = $('#reviewer-decision').value;
+  if (!disposition) return toast('Choose a human disposition first.');
+  reviewState.final = {
+    disposition,
+    rationale: $('#reviewer-note').value.trim(),
+    recorded_at: new Date().toISOString(),
+    actor: 'local_reviewer',
+  };
+  $('#decision-status').textContent = `${disposition} · recorded locally`;
+  $('#export-review').disabled = false;
+  toast('Decision recorded locally. Export it to keep a copy.');
+}
+
+function exportReview() {
+  if (!reviewState.final || reviewState.caseSnapshot !== JSON.stringify(currentCase())) {
+    return toast('Record a decision on the current draft before exporting.');
+  }
+  const record = {
+    schema_version: '1.0',
+    record_type: 'creator_content_review',
+    exported_at: new Date().toISOString(),
+    script: currentCase(),
+    policy: {
+      brand: 'CHANEL',
+      scope: 'project interpretation of U.S. public social media guidelines',
+      source_url: POLICY_SOURCE,
+      source_accessed_on: POLICY_ACCESSED,
+      rule_source_sections: RULE_SECTIONS,
+      campaign_brief: { status: 'not_provided', mandatory_selling_points: 'not_evaluated' },
+    },
+    checks: { keyword_baseline: reviewState.baseline, ai_assisted: reviewState.ai },
+    human_decision: reviewState.final,
+    limitations: [
+      'Text-only draft review; finished-video visibility and audibility not verified.',
+      'A PASS covers only supported public-guideline checks, not campaign-specific selling points.',
+      'Estimated API costs are calculated from token usage and a dated price snapshot, not an invoice.',
+    ],
+  };
+  const filename = (record.script.case_id || 'review').replace(/[^a-z0-9_-]/gi, '_').slice(0, 60);
+  const blob = new Blob([JSON.stringify(record, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `${filename}_review_${record.exported_at.slice(0, 10)}.json`;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast('Review record downloaded to this computer.');
+}
+
 $('#load-sample').addEventListener('click', loadSample);
 $('#load-sample-nav').addEventListener('click', loadSample);
 $('#baseline-button').addEventListener('click', runBaseline);
 $('#ai-button').addEventListener('click', runAI);
 $('#show-reference').addEventListener('click', showReference);
 $('#show-limits').addEventListener('click', () => toast('30 synthetic extension cases; the prompt was revised after earlier results; not an independent or real-world estimate.'));
-$('#record-decision').addEventListener('click', () => {
-  if (!$('#reviewer-decision').value) return toast('Choose a human disposition first.');
-  toast('Decision noted for this session only; it is not saved or sent.');
-});
+$('#record-decision').addEventListener('click', recordDecision);
+$('#export-review').addEventListener('click', exportReview);
+$('#reviewer-decision').addEventListener('change', invalidateDecision);
+$('#reviewer-note').addEventListener('input', invalidateDecision);
 Object.values(ids).forEach((element) => element.addEventListener('input', markDraftChanged));
 Object.values(ids).forEach((element) => element.addEventListener('change', markDraftChanged));
 loadSample();
