@@ -1,3 +1,5 @@
+"""Compare historical scores with proposed label changes without altering frozen data."""
+
 import json
 from collections import Counter
 from pathlib import Path
@@ -66,5 +68,4 @@ for split, cases_file, ai_file, baseline_file in SPLITS:
         "keyword_before": score(before, baseline),
         "keyword_after": score(after, baseline),
     }, indent=2))
-
 
