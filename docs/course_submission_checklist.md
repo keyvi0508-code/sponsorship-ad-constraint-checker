@@ -21,7 +21,7 @@ This checklist maps the project to the four rubric weights cited in the instruct
 
 ## Finalization sequence
 
-1. Deliver a well-structured report near **1,200 words** (about 1,020–1,380 allowed), including outcome, reasoning, performance and eval critique, difficulties, tuning, and rough edges. The DOCX/PDF submission copy is maintained outside this repository.
+1. Deliver a well-structured report near **1,200 words** (about 1,020–1,380 allowed), including outcome, reasoning, performance and eval critique, difficulties, tuning, and rough edges. Submission copies are available as [Word](PE6201_Creator_Content_Review_Workbench_Report.docx) and [PDF](PE6201_Creator_Content_Review_Workbench_Report.pdf); also upload the requested format directly in NTU Learn.
 2. Record and upload a **2–8 minute video**, aiming near five minutes, with the presenter’s face and computer/mobile screen visible together. Content after eight minutes may not be watched.
 3. Keep case files, evaluation code, saved outputs, data and evaluation explainers, persona, input/output, architecture box diagram, and observed-versus-prospective metrics in the repository.
 4. Re-run `python -m unittest discover -s tests -v` and `python -m src.review_one examples/review_case.json`; both are no-call checks. Verify that the marker can access the repository or include a source archive.
