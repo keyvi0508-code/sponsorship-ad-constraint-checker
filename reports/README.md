@@ -2,6 +2,8 @@
 
 This directory retains measured keyword and AI results, prompt-development history, peer-review returns, and label-adjudication notes. The two 30-case splits must be read separately. The 60-case combined file is a convenience for inspection, **not** a new independent benchmark or a pooled headline score.
 
+The [public-Reel feasibility pilot](real_public_reels_pilot_v1.md) uses ten real source-linked posts. It records caption-level observations only, has no full-video verdicts, and is **not** part of either scored split. Its counts can be checked with `python scripts/summarize_real_pilot.py`.
+
 ## What was evaluated
 
 | Split | Cases and reference labels | Keyword result | AI result and summary | Status |

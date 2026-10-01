@@ -4,7 +4,7 @@
 **Runs:** deterministic keyword baseline (no API calls) and two-stage AI reviewer via OpenRouter  
 **Date:** 2026-09-30
 
-The deterministic keyword baseline scored **20/30 (66.7%)**. The AI reviewer scored **23/30 (76.7%)**, three more correct cases on this 30-case set. The AI's estimated token cost was **US$0.237478 total** (about **US$0.00792 per case**) at the recorded rates; check the provider dashboard for actual billing. Both systems were evaluated against the same frozen labels. This is supplementary development evidence; the primary course result is reported separately on the original 30-case set.
+The deterministic keyword baseline scored **20/30 (66.7%)**. The AI reviewer scored **23/30 (76.7%)**, three more correct cases on this 30-case set. The AI's estimated token cost was **US$0.237478 total** (about **US$0.00792 per case**) at the recorded rates; check the provider dashboard for actual billing. Both systems were evaluated against the same frozen labels. This is supplementary development evidence; the primary-set result is reported separately on the original 30-case set.
 
 The AI returned valid structured output for all 30 cases. Gold labels are rows and system predictions are columns.
 
@@ -43,7 +43,7 @@ The deterministic keyword baseline scored **20/30 (66.7%)** on the balanced exte
 
 It flagged 9/10 clear violations and marked one violation `PASS`. It incorrectly flagged 2/10 clean cases. It escalated 3/10 borderline cases to a person; on the other 7, it chose a definitive verdict. The model was correct on 8/10 clean cases.
 
-This is an actually measured baseline on the supplementary extension, not a result inferred from the primary 30 cases. Keep this split separate from the primary course result. The saved per-case results are in [baseline_keyword_holdout_extension_v2.json](baseline_keyword_holdout_extension_v2.json); AI per-case outputs and summary are [ai_evaluation_extension_v2.jsonl](ai_evaluation_extension_v2.jsonl) and [ai_evaluation_extension_v2_summary.json](ai_evaluation_extension_v2_summary.json).
+This is an actually measured baseline on the supplementary extension, not a result inferred from the primary 30 cases. Keep this split separate from the primary-set result. The saved per-case results are in [baseline_keyword_holdout_extension_v2.json](baseline_keyword_holdout_extension_v2.json); AI per-case outputs and summary are [ai_evaluation_extension_v2.jsonl](ai_evaluation_extension_v2.jsonl) and [ai_evaluation_extension_v2_summary.json](ai_evaluation_extension_v2_summary.json).
 
 ### Case-by-case comparison
 
