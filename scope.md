@@ -2,34 +2,36 @@
 
 ## Problem
 
-Reviewers checking sponsored short-form video scripts against creator guidelines may miss meaning and context when relying on keyword search. An LLM can interpret context but may over-flag acceptable language. This project compares both approaches on a controlled English-only evaluation while leaving final decisions to a human.
+Reviewers checking sponsored short-form video scripts against creator guidelines may miss meaning and context when they rely on keyword search. An LLM can interpret context but may over-flag acceptable language. This project compares both approaches on a controlled English-language evaluation while leaving final decisions to a human.
 
 ## User and use case
 
-A creator-partnership or brand-content reviewer checks a proposed English sponsored-video script before publication against CHANEL's publicly available Social Media Guidelines. This is an academic prototype, not affiliated with CHANEL and not a reproduction of its private campaign approval process.
+A creator-partnership or brand-content reviewer checks a proposed English sponsored-video script before publication against CHANEL's publicly available Social Media Guidelines. This is an independent prototype; it is not affiliated with CHANEL and does not claim to reproduce CHANEL's private campaign approval process.
 
 ## Source-grounded MVP rules
 
-1. **Disclosure identity and wording:** disclose the creator's material connection clearly. If multiple brands appear and a generic disclosure would not make CHANEL's sponsorship clear, identify the sponsor. The guide gives acceptable and insufficient examples.
-2. **Disclosure placement in supplied script fields:** disclosure should appear with the endorsement and at the beginning/above the fold, not only in the profile or behind a “more” action. For video, evaluate disclosure text represented in spoken, on-screen, and caption fields. A text-only prototype cannot verify actual visibility, contrast, duration, or audibility.
+Only rules in CHANEL's public guide are in scope:
+
+1. **Disclosure identity and wording:** the script should clearly disclose the creator's material connection. If multiple brands appear and a generic disclosure would not make CHANEL's sponsorship clear, the sponsor should be identified. The guide gives acceptable and insufficient examples.
+2. **Disclosure placement in the supplied script fields:** the disclosure should appear with the endorsement and at the beginning/above the fold, rather than only in the profile or behind a “more” action. For video, review disclosure text represented in spoken, on-screen, and caption fields. A text-only prototype cannot verify actual visibility, contrast, duration, or audibility.
 3. **Competitor criticism and impartiality:** when a creator connected to CHANEL criticizes a competitor, the script must not imply that the opinion is impartial. A neutral competitor mention alone is not automatically a violation.
 
-The guide also recommends truthful first-hand opinions and verifiable factual statements. The prototype may route claims lacking an authoritative reference to HUMAN_REVIEW; it will not independently certify a claim as true or false without evidence.
+The guide also recommends truthful first-hand opinions and verifiable factual statements. The MVP may flag claims that need supporting evidence for **human review**, but it will not independently certify whether a product claim is true unless an authoritative reference is explicitly supplied.
 
 ## Input and output
 
-Input is a structured English script with platform/format, caption, spoken lines, planned on-screen text, and scene/placement notes. Output is PASS, FLAG, or HUMAN_REVIEW, with a source rule ID, quoted evidence, and concise rationale. The tool supports reviewer decisions; it does not approve or publish content.
+Input is a structured English script with platform/format, caption, spoken lines, planned on-screen text, and scene/placement notes. Output is PASS, FLAG, or HUMAN_REVIEW, with a source rule ID, quoted evidence, and a concise rationale. The tool supports reviewer decisions; it does not approve or publish content automatically.
 
 ## Evaluation commitment
 
-Primary evaluation: 30 English-language script instances, balanced across 10 compliant, 10 clearly violating, and 10 borderline cases. Ground-truth labels and rationales are written and frozen before model evaluation. The keyword baseline and AI system run on the same set. Any additional development or stress cases are reported separately.
+Primary evaluation: 30 English-language script instances, balanced across 10 compliant, 10 clearly violating, and 10 borderline cases. Ground-truth labels and rationales are written and frozen before model evaluation. The keyword baseline and AI system run on the same set. A separately reported development/stress set may be added if time permits.
 
-Report false positives, false negatives, class-specific results, borderline escalation, valid structured-output rate, API model/token use, and cost per script.
+Report both error directions, class-specific results, borderline escalation, valid structured-output rate, API model/token use, and cost per script.
 
 ## Out of scope
 
-- Non-English scripts and translation comparisons.
+- Chinese-language scripts or translation comparisons.
 - Private campaign briefs, unpublished product selling points, or an invented CHANEL competitor blacklist.
-- Video/audio ingestion and verification of actual screen prominence or sound.
+- Video/audio ingestion or measurement of actual visual prominence, timing, or sound.
 - Legal advice, automatic publishing, and final brand approval.
-- Claims that the tool is CHANEL-approved or catches every breach.
+- Claims that the tool is CHANEL-approved or will catch every breach.
