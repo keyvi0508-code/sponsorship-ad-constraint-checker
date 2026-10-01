@@ -1,0 +1,190 @@
+## Cases
+
+### CAL‑01
+
+表格
+
+| Context | English - Sponsored short video |
+| --- | --- |
+| Use and claims | Creator's use of discussed product: unknown; claim sources: none |
+| Caption | Caption: #ad - "Another luxury house is overpriced for what you get." |
+| Spoken script | Spoken script: "This video is sponsored by CHANEL." |
+| Visual and on‑screen | Visual endorsement: no; on‑screen text: none |
+
+Verdict: `PASS`
+Rule ID(s): CH‑CONTEXT‑01
+Exact evidence: “Another luxury house is overpriced for what you get.”
+Rationale: This is framed as creator’s subjective personal opinion of a competitor brand. There is no language presenting this critique as impartial, objective assessment. Required ad and sponsorship disclosures are present. No clear rule violation from given facts.
+Confidence: `high`
+Missing fact that could change verdict: None.
+
+### CAL‑02
+
+表格
+
+| Context | English - Sponsored short video |
+| --- | --- |
+| Use and claims | Creator's use of discussed product: unknown; claim sources: none |
+| Caption | Caption: #ad - "This rival brand is worse for my routine." |
+| Spoken script | Spoken script: "Paid partnership with CHANEL." |
+| Visual and on‑screen | Visual endorsement: no; on‑screen text: none |
+
+Verdict: `PASS`
+Rule ID(s): CH‑CONTEXT‑01
+Exact evidence: “This rival brand is worse for my routine.”
+Rationale: Subjective personal negative opinion toward competitor; no wording implies impartial objective judgment. All mandatory disclosures are included. No material unresolved questions.
+Confidence: `high`
+Missing fact that could change verdict: None.
+
+### CAL‑03
+
+表格
+
+| Context | English - Sponsored short video |
+| --- | --- |
+| Use and claims | Creator's use of discussed product: unknown; claim sources: none |
+| Caption | Caption: #ad - "My own test: this rival brand feels less suited to me." |
+| Spoken script | Spoken script: "This video is sponsored by CHANEL." |
+| Visual and on‑screen | Visual endorsement: no; on‑screen text: none |
+
+Verdict: `PASS`
+Rule ID(s): CH‑CONTEXT‑01
+Exact evidence: “My own test: this rival brand feels less suited to me.”
+Rationale: Phrase “my own test” anchors the statement to creator’s personal subjective experience, does not frame competitor criticism as impartial third‑party evaluation. Disclosures are complete.
+Confidence: `high`
+Missing fact that could change verdict: None.
+
+### CAL‑04
+
+表格
+
+| Context | English - Sponsored short video |
+| --- | --- |
+| Use and claims | Creator's use of discussed product: unknown; claim sources: none |
+| Caption | Caption: #ad - "Another luxury house's formula feels cheap to me." |
+| Spoken script | Spoken script: "Sponsored by CHANEL." |
+| Visual and on‑screen | Visual endorsement: no; on‑screen text: none |
+
+Verdict: `PASS`
+Rule ID(s): CH‑CONTEXT‑01
+Exact evidence: “Another luxury house's formula feels cheap to me.”
+Rationale: Subjective personal feeling/opinion about competitor formula; “to me” explicitly marks it as personal perspective, no implication of impartial criticism. Disclosures present.
+Confidence: `high`
+Missing fact that could change verdict: None.
+
+### CAL‑05
+
+表格
+
+| Context | English - Sponsored short video |
+| --- | --- |
+| Use and claims | Creator's use of discussed product: unknown; claim sources: none |
+| Caption | Caption: #ad - "I have a connection to CHANEL, and another luxury house's formula feels cheaper to me." |
+| Spoken script | Spoken script: "This video is sponsored by CHANEL." |
+| Visual and on‑screen | Visual endorsement: no; on‑screen text: none |
+
+Verdict: `PASS`
+Rule ID(s): CH‑CONTEXT‑01
+Exact evidence: “I have a connection to CHANEL, and another luxury house's formula feels cheaper to me.”
+Rationale: Creator explicitly discloses their CHANEL connection alongside subjective personal opinion of competitor. Does not present competitor feedback as impartial. Required ad/sponsor disclosures are in place.
+Confidence: `high`
+Missing fact that could change verdict: None.
+
+### CAL‑06
+
+Context English - Sponsored short video
+Use and claims Creator's use of discussed product: confirmed; claim sources: none
+Caption Caption: #ad - "A side‑by‑side wear test: the other formula looked patchier by hour six, while this one stayed smoother on my skin."
+Spoken script Spoken script: "This video is sponsored by CHANEL."
+Visual and on‑screen Visual endorsement: no; on‑screen text: none
+
+Verdict: `PASS`
+Rule ID(s): CH‑CONTEXT‑01, CH‑CLAIM‑01
+Exact evidence: “A side‑by‑side wear test: the other formula looked patchier by hour six, while this one stayed smoother on my skin.”
+Rationale: Creator product use status is confirmed. Statement is first‑hand experiential comparison rooted in their own wear test; language is personal observation, no claim of impartial third‑party judgment. Disclosures present.
+Confidence: `high`
+Missing fact that could change verdict: None.
+
+### CAL‑07
+
+Context English - Sponsored short video
+Use and claims Creator's use of discussed product: unknown; claim sources: none
+Caption Caption: #ad - "I wore this foundation through three workdays, and I loved how comfortable it felt."
+Spoken script Spoken script: "Paid partnership with CHANEL."
+Visual and on‑screen Visual endorsement: no; on‑screen text: none
+
+Verdict: `HUMAN_REVIEW`
+Rule ID(s): CH‑CLAIM‑01
+Exact evidence: “I wore this foundation through three workdays, and I loved how comfortable it felt.”
+Rationale: Script asserts concrete first‑hand usage‑based product opinion, but metadata states creator product use is unknown. Cannot verify whether the claimed personal experience corresponds to actual product use; this is material for CH‑CLAIM‑01. Disclosures are complete.
+Confidence: `high`
+Missing fact that could change verdict: Verified factual confirmation whether creator actually wore the foundation for three workdays.
+
+### CAL‑08
+
+Context English - Sponsored short video
+Use and claims Creator's use of discussed product: unknown; claim sources: none
+Caption Caption: #ad - CHANEL - "I love how this foundation feels on my skin."
+Spoken script Spoken script: "I love how this foundation feels on my skin."
+Visual and on‑screen Visual endorsement: yes; on‑screen text: "CHANEL foundation"
+
+Verdict: `HUMAN_REVIEW`
+Rule ID(s): CH‑CLAIM‑01
+Exact evidence: “I love how this foundation feels on my skin.”
+Rationale: Clear first‑hand experiential opinion about the specifically identifiable CHANEL foundation. Creator product‑use status is unknown. Cannot confirm if claimed skin‑feel experience comes from real product use, which is material under CH‑CLAIM‑01. Ad disclosure is present.
+Confidence: `high`
+Missing fact that could change verdict: Confirmation whether creator actually used the referenced CHANEL foundation.
+
+### CAL‑09
+
+表格
+
+| Context | English - Sponsored short video |
+| --- | --- |
+| Use and claims | Creator's use of discussed product: unknown; claim sources: none |
+| Caption | Caption: #ad - "My own test suggests this rival fragrance lasts longer." |
+| Spoken script | Spoken script: "This video is sponsored by CHANEL. My own test suggests the rival fragrance lasts longer." |
+| Visual and on‑screen | Visual endorsement: no; on‑screen text: none |
+
+Verdict: `HUMAN_REVIEW`
+Rule ID(s): CH‑CONTEXT‑01, CH‑CLAIM‑01
+Exact evidence: “My own test suggests this rival fragrance lasts longer.” (caption and spoken script)
+Rationale: References “my own test” as basis for a performance claim about competitor fragrance, creator product‑use status unknown. Cannot verify whether the described test actually occurred. Statement is framed as creator’s own test so no impartiality violation apparent, but the factual basis for the performance claim cannot be validated from provided inputs, triggering human review. Disclosures present.
+Confidence: `high`
+Missing fact that could change verdict: Confirmation whether creator performed the referenced fragrance duration test.
+
+### CAL‑10
+
+表格
+
+| Context | English - Sponsored short video |
+| --- | --- |
+| Use and claims | Creator's use of discussed product: confirmed; claim sources: none |
+| Caption | Caption: #ad - CHANEL - "A short wear test with another luxury house's lipstick." |
+| Spoken script | Spoken script: "Sponsored by CHANEL. In a short wear test, the other lipstick transferred more." |
+| Visual and on‑screen | Visual endorsement: no; on‑screen text: none |
+
+Verdict: `PASS`
+Rule ID(s): CH‑CONTEXT‑01, CH‑CLAIM‑01
+Exact evidence: “A short wear test with another luxury house's lipstick.”; “In a short wear test, the other lipstick transferred more.”
+Rationale: Creator’s product‑use status is confirmed. Claim is personal observation from their own wear test; no language represents the comparison as impartial third‑party analysis. Disclosures are complete.
+Confidence: `high`
+Missing fact that could change verdict: None.
+
+### CAL‑11
+
+表格
+
+| Context | English - Sponsored short video |
+| --- | --- |
+| Use and claims | Creator's use of discussed product: not used; claim sources: none |
+| Caption | Caption: #ad - "My review: I tried this serum and recommend it." |
+| Spoken script | Spoken script: "I have never tried this serum, but my review is that it works beautifully." |
+| Visual and on‑screen | Visual endorsement: no; on‑screen text: none |
+
+Verdict: `FLAG`
+Rule ID(s): CH‑CLAIM‑01
+Exact evidence: Caption: “My review: I tried this serum and recommend it.”; Spoken script: “I have never tried this serum, but my review is that it works beautifully.”
+Rationale: Caption falsely asserts creator “tried this serum”, while spoken script explicitly states creator has never used the serum, yet still delivers a positive product review recommendation. This directly violates CH‑CLAIM‑01 requirement that product opinions should reflect actual experience. Ad disclosure exists but does not remedy the false firsthand‑experience claim.
+Confidence: `high`
+Missing fact that could change verdict: None; given metadata explicitly states “not used”, conflict is clear from supplied materials.
