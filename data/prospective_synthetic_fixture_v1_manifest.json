@@ -1,0 +1,17 @@
+{
+  "status": "PROSPECTIVE_UNREVIEWED_FIXTURE_NOT_SCORED",
+  "source_script": "scripts/generate_prospective_cases.py",
+  "source_script_sha256": "5823fb4a9c692f21aad51b7d72c735862dce1e3d70503f16c342a420aca7e523",
+  "output": "data/prospective_synthetic_fixture_v1.jsonl",
+  "output_sha256": "c09a3a7a280ca2f8e2a40bec8740b3400d91d5ea7c24041aa77835bd14945b9f",
+  "n_cases": 30,
+  "class_counts": {
+    "PASS": 10,
+    "FLAG": 10,
+    "HUMAN_REVIEW": 10
+  },
+  "scenario_families": 15,
+  "variants_per_family": 2,
+  "randomness": "none",
+  "interpretation": "Construction targets await independent annotation; do not pool with the historical 60 scored cases."
+}
