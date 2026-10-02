@@ -1,0 +1,70 @@
+{
+  "status": "EXPLORATORY_SYNTHETIC_DEVELOPMENT_ABLATION",
+  "date": "2026-10-02",
+  "n_cases": 30,
+  "model": "openai/gpt-6-sol",
+  "prompt_version": "single-stage-ablation-2026-10-02-v1",
+  "prompt_sha256": "01a1ad3a15984001ac28f0d8ab9b1fa89da571d67dd5266fca4271fe2f97e334",
+  "dataset_sha256": "c3865f5dbb43bb33b079016b836f0a531d323592fe04b807ea361c5dc9417945",
+  "single_stage_metrics": {
+    "n": 30,
+    "accuracy": 0.7333333333333333,
+    "confusion_matrix": {
+      "FLAG": {
+        "FLAG": 9,
+        "HUMAN_REVIEW": 0,
+        "PASS": 1
+      },
+      "HUMAN_REVIEW": {
+        "FLAG": 4,
+        "HUMAN_REVIEW": 5,
+        "PASS": 1
+      },
+      "PASS": {
+        "FLAG": 0,
+        "HUMAN_REVIEW": 2,
+        "PASS": 8
+      }
+    },
+    "false_positives_on_clean": 0,
+    "human_escalations_on_clean": 2,
+    "false_negatives_marked_safe": 1,
+    "violations_escalated_instead_of_flagged": 0,
+    "borderline_escalations": 5
+  },
+  "saved_two_stage_metrics": {
+    "n": 30,
+    "accuracy": 0.7666666666666667,
+    "confusion_matrix": {
+      "FLAG": {
+        "FLAG": 10,
+        "HUMAN_REVIEW": 0,
+        "PASS": 0
+      },
+      "HUMAN_REVIEW": {
+        "FLAG": 4,
+        "HUMAN_REVIEW": 5,
+        "PASS": 1
+      },
+      "PASS": {
+        "FLAG": 0,
+        "HUMAN_REVIEW": 2,
+        "PASS": 8
+      }
+    },
+    "false_positives_on_clean": 0,
+    "human_escalations_on_clean": 2,
+    "false_negatives_marked_safe": 0,
+    "violations_escalated_instead_of_flagged": 0,
+    "borderline_escalations": 5
+  },
+  "one_vs_two_stage_verdict_disagreements": 1,
+  "single_stage_usage": {
+    "input_tokens": 23961,
+    "output_tokens": 6891
+  },
+  "single_stage_estimated_cost_usd": 0.116832,
+  "saved_two_stage_estimated_cost_usd": 0.237478,
+  "gold_labels_available": true,
+  "limitation": "Prompt designed after two-stage outputs were inspected; no independent generalization claim."
+}

@@ -1,0 +1,18 @@
+{
+  "evaluation_layer": "public_caption_development_pilot",
+  "source_manifest_sha256": "b73fc4eccba93e560bcbe517b343db8276feea64b1233305c70cd38ac0cdea3f",
+  "n_posts": 23,
+  "method": "caption_literal_keyword_screen",
+  "caption_suggestion_distribution": {
+    "PASS": 11,
+    "FLAG": 0,
+    "HUMAN_REVIEW": 4,
+    "UNKNOWN": 8
+  },
+  "full_review_status_distribution": {
+    "UNKNOWN": 23
+  },
+  "gold_labels_available": false,
+  "accuracy_calculated": false,
+  "note": "Keyword suggestions concern listed literal disclosure markers only. They are not video compliance judgements."
+}

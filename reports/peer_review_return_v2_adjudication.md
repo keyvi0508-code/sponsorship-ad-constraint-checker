@@ -1,5 +1,7 @@
 # Revised dataset v2: peer-review adjudication
 
+**Historical stage record:** Statements below about AI not yet having run describe the state at this adjudication. Later saved results are indexed in the [current evaluation guide](README.md).
+
 Status: labels frozen for reproducible evaluation after adjudication. Reviewer identity/provenance was not included in the return; record it before claiming independent peer-review reliability.
 
 ## Decision

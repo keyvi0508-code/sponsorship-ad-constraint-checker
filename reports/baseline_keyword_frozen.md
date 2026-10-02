@@ -1,5 +1,7 @@
 # Keyword baseline result on the frozen dataset
 
+**Historical stage record:** Statements below about AI not yet having run describe the state on 2026-09-29. Later saved synthetic and real-caption AI runs are indexed in the [current evaluation guide](README.md).
+
 Run date: 2026-09-29  
 Dataset: 30 fictional English scripts, SHA-256 `cff65dc75a88a6aae1536758fcb67312b69574407ff255dcc7be7fa1b7ed3ac2`  
 Method: deterministic keyword/rule-search baseline in `src/baseline.py`; no external API calls.

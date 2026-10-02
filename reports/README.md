@@ -4,6 +4,8 @@ This directory retains measured keyword and AI results, prompt-development histo
 
 The [public-Reel feasibility pilot](real_public_reels_pilot_v1.md) uses ten real source-linked posts. It records caption-level observations only, has no full-video verdicts, and is **not** part of either scored split. Its counts can be checked with `python scripts/summarize_real_pilot.py`.
 
+The later [23-post real-caption development pilot](public_caption_ai_pilot_v1.md) locks original-post caption text from four discovery routes before method review. Keyword suggestions were 11 `PASS`, 4 `HUMAN_REVIEW`, 8 `UNKNOWN`; AI suggestions were 5, 14, 4. The methods disagreed on 14 posts. Full-video status is `UNKNOWN` for all 23. The [case-level AI output](public_caption_ai_v1.jsonl), [cost and usage summary](public_caption_ai_v1_summary.json), and [saved-output audit](public_caption_pilot_analysis_v1.json) are retained. These are descriptive suggestions, **not** compliance labels or accuracy results.
+
 ## What was evaluated
 
 | Split | Cases and reference labels | Keyword result | AI result and summary | Status |
@@ -11,7 +13,11 @@ The [public-Reel feasibility pilot](real_public_reels_pilot_v1.md) uses ten real
 | Primary | [`primary_cases.jsonl`](../data/primary_cases.jsonl), [`frozen_manifest.json`](../data/frozen_manifest.json) | [`baseline_keyword_frozen.json`](baseline_keyword_frozen.json) | [`ai_evaluation_rubric-clarification-2026-09-30-v1.jsonl`](ai_evaluation_rubric-clarification-2026-09-30-v1.jsonl), [summary](ai_evaluation_rubric-clarification-2026-09-30-v1_summary.json) | Prompt was revised after earlier primary-set outputs; development evidence. |
 | Extension | [`extension_cases_v2.jsonl`](../data/extension_cases_v2.jsonl), [`extension_frozen_manifest_v2.json`](../data/extension_frozen_manifest_v2.json) | [`baseline_keyword_holdout_extension_v2.json`](baseline_keyword_holdout_extension_v2.json) | [`ai_evaluation_extension_v2.jsonl`](ai_evaluation_extension_v2.jsonl), [summary](ai_evaluation_extension_v2_summary.json) | Revised prompt held fixed; supplementary synthetic development check, not real-world validation. |
 
-The frozen case files each contain ten `PASS`, ten `FLAG`, and ten `HUMAN_REVIEW` labels. The model request removes `ground_truth`, `annotator_notes`, and split metadata before calling OpenRouter. The tests verify exclusion from both AI stages. We did **not** perform a deliberately leaked-input before/after experiment. [`data/README.md`](../data/README.md) explains case construction, label history, and what the blind-review return can and cannot establish.
+The frozen case files each contain ten `PASS`, ten `FLAG`, and ten `HUMAN_REVIEW` labels. The model request now uses an explicit input allowlist. The [offline leakage audit](model_input_leakage_audit_v1.md) confirms no private fields in either stage across all 60 saved cases, including a stress check with newly named label fields. We did **not** perform a deliberately leaked-input before/after score experiment; feeding the answer to a model would contaminate that score. [`data/README.md`](../data/README.md) explains case construction, label history, and what the blind-review return can and cannot establish.
+
+Run `python scripts/verify_synthetic_dataset.py` to check all frozen dataset hashes, class balance, split order, and the combined-file derivation. The [provenance note](../data/synthetic_data_provenance.md) explains why this reproduces the evaluated files but not the original authoring process; no historical generator prompt was retained.
+
+The [single-stage ablation protocol](single_stage_ablation_protocol_v1.md) locked a one-call alternative before its paid run. The [measured retrospective comparison](single_stage_ablation_results_v1.md) found 22/30 exact verdict matches for one stage versus 23/30 for the saved two-stage run, with one `FLAG` case marked `PASS` only by one stage. Its cost was US$0.116832 versus US$0.237478. This is synthetic development evidence, not independent validation. Run `python scripts/analyze_single_stage_ablation.py` to recheck the saved outputs.
 
 ## How to read the numbers
 

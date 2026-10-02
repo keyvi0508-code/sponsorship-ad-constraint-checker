@@ -1,0 +1,79 @@
+{
+  "status": "SAVED_CAPTION_RUN_VALIDATED",
+  "n_posts": 23,
+  "source_sha256": "b73fc4eccba93e560bcbe517b343db8276feea64b1233305c70cd38ac0cdea3f",
+  "keyword_distribution": {
+    "PASS": 11,
+    "FLAG": 0,
+    "HUMAN_REVIEW": 4,
+    "UNKNOWN": 8
+  },
+  "ai_distribution": {
+    "PASS": 5,
+    "FLAG": 0,
+    "HUMAN_REVIEW": 14,
+    "UNKNOWN": 4
+  },
+  "keyword_to_ai_matrix": {
+    "PASS": {
+      "PASS": 5,
+      "FLAG": 0,
+      "HUMAN_REVIEW": 6,
+      "UNKNOWN": 0
+    },
+    "FLAG": {
+      "PASS": 0,
+      "FLAG": 0,
+      "HUMAN_REVIEW": 0,
+      "UNKNOWN": 0
+    },
+    "HUMAN_REVIEW": {
+      "PASS": 0,
+      "FLAG": 0,
+      "HUMAN_REVIEW": 2,
+      "UNKNOWN": 2
+    },
+    "UNKNOWN": {
+      "PASS": 0,
+      "FLAG": 0,
+      "HUMAN_REVIEW": 6,
+      "UNKNOWN": 2
+    }
+  },
+  "disagreements": 14,
+  "ai_by_creator_authored_relationship_signal": {
+    "CREATOR_GIFT_MARKER": {
+      "PASS": 0,
+      "FLAG": 0,
+      "HUMAN_REVIEW": 5,
+      "UNKNOWN": 2
+    },
+    "CREATOR_PARTNERSHIP_MARKER": {
+      "PASS": 5,
+      "FLAG": 0,
+      "HUMAN_REVIEW": 6,
+      "UNKNOWN": 0
+    },
+    "NOT_ESTABLISHED": {
+      "PASS": 0,
+      "FLAG": 0,
+      "HUMAN_REVIEW": 3,
+      "UNKNOWN": 2
+    }
+  },
+  "ai_finding_rule_counts": {
+    "CH-CLAIM-01": 9,
+    "CH-DISC-01": 5,
+    "CH-DISC-02": 4
+  },
+  "saved_evidence_quotes_outside_caption": 0,
+  "full_review_status_distribution": {
+    "UNKNOWN": 23
+  },
+  "latency_median_seconds": 9.186,
+  "estimated_total_cost_usd": 0.181154,
+  "estimated_cost_per_post_usd": 0.007876,
+  "reference_labels_available": false,
+  "accuracy_calculated": false,
+  "interpretation": "Descriptive method behavior on a purposively selected caption-only sample; no full-video compliance or accuracy claim."
+}

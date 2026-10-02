@@ -1,0 +1,36 @@
+{
+  "evaluation_layer": "public_caption_development_pilot",
+  "date": "2026-10-02",
+  "n_posts": 23,
+  "n_ai_completed": 23,
+  "source_manifest_sha256": "b73fc4eccba93e560bcbe517b343db8276feea64b1233305c70cd38ac0cdea3f",
+  "prompt_sha256": "2b35873a745fe2e15b2a7c73f4342dc7a1f459b6795b31efc9d36ed8228fb129",
+  "provider": "openrouter",
+  "model": "openai/gpt-6-sol",
+  "prompt_version": "public-caption-2026-10-02-v1",
+  "caption_suggestion_distribution": {
+    "PASS": 5,
+    "FLAG": 0,
+    "HUMAN_REVIEW": 14,
+    "UNKNOWN": 4
+  },
+  "full_review_status_distribution": {
+    "UNKNOWN": 23
+  },
+  "keyword_ai_disagreements": 14,
+  "usage": {
+    "input_tokens": 22022,
+    "output_tokens": 13711,
+    "stage1_input_tokens": 5235,
+    "stage1_output_tokens": 5395,
+    "stage2_input_tokens": 16787,
+    "stage2_output_tokens": 8316
+  },
+  "estimated_total_cost_usd": 0.181154,
+  "conservative_preflight_ceiling_usd": 0.827944,
+  "cost_rate_snapshot": "2026-10-02",
+  "cost_rate_source": "https://openrouter.ai/openai/gpt-6-sol",
+  "gold_labels_available": false,
+  "accuracy_calculated": false,
+  "note": "Caption suggestions are descriptive. No full-video or real-world accuracy result is claimed."
+}
