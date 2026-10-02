@@ -59,6 +59,8 @@ The primary balanced 30-case synthetic set scored **27/30 (90.0%)** for the revi
 
 The examples are fictional, and the prompt was revised after an earlier run. A later 11-case blind review and [rule-by-rule adjudication](reports/boundary_case_adjudication_v1.md) identified four proposed overall label changes and one additional rule ID. The scores above still use the original frozen labels; no revised score is claimed. The [sensitivity analysis](reports/label_adjudication_sensitivity_v1.md) shows exactly how retrospective relabeling would change the saved scores and why that is not an independent benchmark. These small-sample results describe the constructed cases and do not establish real-world performance or prove that AI is generally better. See the [evaluation report](reports/holdout_keyword_baseline_results.md), [data guide](data/README.md), and [evaluation protocol](docs/evaluation_redesign_protocol.md).
 
+The historical 60 cases have fixed files and hashes but no preserved original wording generator. A separate [prospective 30-case fixture](data/prospective_synthetic_fixture_v1.jsonl) now has a committed [generator and exact-byte check](scripts/generate_prospective_cases.py). Its construction targets have not been independently reviewed or scored and are excluded from all results above. The [provenance note](data/synthetic_data_provenance.md) explains both boundaries.
+
 A [one-stage development comparison](reports/single_stage_ablation_results_v1.md) on the synthetic extension returned 22/30 verdict matches for one request versus 23/30 for the saved two-stage run. The only verdict disagreement was one clear violation marked `PASS` by one stage. One stage cost US$0.116832 versus US$0.237478 and had lower median latency. This single retrospective comparison does not prove a general two-stage benefit.
 
 No numeric performance target was registered before these runs. The [product guide](docs/product_overview.md#metrics-targeted-and-reached) separates observed results from **prospective targets** for a new, independently labelled test; it does not retroactively call the current scores a pass. The [evaluation guide](reports/README.md) maps each reported number to its saved data and output file.
@@ -83,6 +85,8 @@ python scripts/label_sensitivity.py
 python scripts/evaluate_public_captions.py
 python scripts/analyze_public_caption_pilot.py
 python scripts/verify_synthetic_dataset.py
+python scripts/generate_prospective_cases.py --check
+python scripts/summarize_public_caption_disagreements.py
 python scripts/audit_model_input_leakage.py
 python scripts/evaluate_single_stage_ablation.py
 python scripts/analyze_single_stage_ablation.py
