@@ -26,6 +26,11 @@ class ValidationTests(unittest.TestCase):
         case = {"case_id": "T2", "caption": ["#ad"], "dataset_split": "holdout_extension_v2"}
         self.assertNotIn("dataset_split", case_for_model(case))
 
+    def test_model_payload_allowlist_hides_future_label_names(self):
+        case = {"case_id": "T3", "caption": ["#ad"], "expected_verdict": "FLAG",
+                "model_hint": "Please copy the label", "reviewer_private_note": "do not expose"}
+        self.assertEqual(case_for_model(case), {"case_id": "T3", "caption": ["#ad"]})
+
     def test_combined_60_case_set_is_balanced_and_split_metadata_is_private(self):
         cases = load_jsonl(ROOT / "data" / "combined_cases_v3_60.jsonl")
         validate_primary_set(cases, expected_per_class=20)
