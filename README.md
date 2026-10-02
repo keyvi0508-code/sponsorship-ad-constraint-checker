@@ -53,11 +53,13 @@ To run the model, review the printed estimate and use `--run-api --confirm-paid-
 
 ## Evaluation snapshot
 
-A separate [public-content feasibility pilot](reports/real_public_reels_pilot_v1.md) links to **10 real CHANEL-related creator Reels** from nine creators and records only directly observable caption signals. It found nine CHANEL-specific partnership markers and one generic `#gifted` marker with brand tags in the visible captions. Video/audio disclosures and creator-use facts were not verified, so the pilot reports **no full policy labels and no model accuracy**. These posts are not mixed into the fictional development sets.
+A [real public-caption development pilot](reports/public_caption_ai_pilot_v1.md) links **23 original CHANEL-related Reels** from 22 creators, selected through four discovery routes. Its source order and caption file were locked before method review. The caption-only keyword screen suggested 11 `PASS`, 4 `HUMAN_REVIEW` and 8 `UNKNOWN`; the two-stage AI suggested 5, 14 and 4 respectively. They disagreed on 14/23 posts. Every full-video review status remains `UNKNOWN` because speech, overlays, product use, and private relationship facts were not verified. These descriptive suggestions are not compliance labels, accuracy estimates, or part of the fictional development sets. The [case-level results and critique](reports/public_caption_ai_pilot_v1.md) record evidence and over-escalation risks.
 
 The primary balanced 30-case synthetic set scored **27/30 (90.0%)** for the revised AI reviewer and **24/30 (80.0%)** for the measured keyword baseline. A separate 30-case synthetic extension scored **23/30 (76.7%)** for AI and **20/30 (66.7%)** for the baseline. Keep the splits separate; the extension is supplementary development evidence, not a real-world benchmark.
 
 The examples are fictional, and the prompt was revised after an earlier run. A later 11-case blind review and [rule-by-rule adjudication](reports/boundary_case_adjudication_v1.md) identified four proposed overall label changes and one additional rule ID. The scores above still use the original frozen labels; no revised score is claimed. The [sensitivity analysis](reports/label_adjudication_sensitivity_v1.md) shows exactly how retrospective relabeling would change the saved scores and why that is not an independent benchmark. These small-sample results describe the constructed cases and do not establish real-world performance or prove that AI is generally better. See the [evaluation report](reports/holdout_keyword_baseline_results.md), [data guide](data/README.md), and [evaluation protocol](docs/evaluation_redesign_protocol.md).
+
+A [one-stage development comparison](reports/single_stage_ablation_results_v1.md) on the synthetic extension returned 22/30 verdict matches for one request versus 23/30 for the saved two-stage run. The only verdict disagreement was one clear violation marked `PASS` by one stage. One stage cost US$0.116832 versus US$0.237478 and had lower median latency. This single retrospective comparison does not prove a general two-stage benefit.
 
 No numeric performance target was registered before these runs. The [product guide](docs/product_overview.md#metrics-targeted-and-reached) separates observed results from **prospective targets** for a new, independently labelled test; it does not retroactively call the current scores a pass. The [evaluation guide](reports/README.md) maps each reported number to its saved data and output file.
 
@@ -78,6 +80,12 @@ On the extension run, estimated token cost was **US$0.00792 per script** and obs
 python -m unittest discover -s tests -v
 python -m src.evaluate_baseline data/extension_cases_v2.jsonl
 python scripts/label_sensitivity.py
+python scripts/evaluate_public_captions.py
+python scripts/analyze_public_caption_pilot.py
+python scripts/verify_synthetic_dataset.py
+python scripts/audit_model_input_leakage.py
+python scripts/evaluate_single_stage_ablation.py
+python scripts/analyze_single_stage_ablation.py
 ```
 
 ## Project notes
@@ -86,6 +94,11 @@ python scripts/label_sensitivity.py
 - [Product scope](scope.md) and [design decisions](decisions.md)
 - [Product persona, inputs, outputs, architecture and metrics](docs/product_overview.md)
 - [Evaluation files and metric definitions](reports/README.md)
+- [Real public-caption pilot and critique](reports/public_caption_ai_pilot_v1.md)
+- [Synthetic data provenance and exact-file verification](data/synthetic_data_provenance.md)
+- [Model-input leakage audit](reports/model_input_leakage_audit_v1.md)
+- [One-stage versus two-stage comparison protocol](reports/single_stage_ablation_protocol_v1.md)
+- [Measured one-stage comparison and limitations](reports/single_stage_ablation_results_v1.md)
 - [Source assessment](docs/brand_source_research.md)
 - [Evaluation protocol](docs/evaluation_redesign_protocol.md) — separates the primary 30-case result from the supplementary extension.
 
