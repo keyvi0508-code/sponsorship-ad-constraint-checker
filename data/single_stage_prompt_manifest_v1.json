@@ -1,0 +1,9 @@
+{
+  "status": "PROMPT_LOCKED_BEFORE_ABLATION_RUN",
+  "locked_on": "2026-10-02",
+  "prompt_version": "single-stage-ablation-2026-10-02-v1",
+  "model": "openai/gpt-6-sol",
+  "sha256": "01a1ad3a15984001ac28f0d8ab9b1fa89da571d67dd5266fca4271fe2f97e334",
+  "digest_definition": "SHA-256 of canonical JSON containing model, prompt version, single-stage instructions, decision schema, and rulebook SHA-256",
+  "limitation": "This prompt was designed after two-stage development outputs had already been inspected; the ablation is exploratory."
+}

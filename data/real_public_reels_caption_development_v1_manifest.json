@@ -1,0 +1,44 @@
+{
+  "status": "SOURCE_SELECTION_LOCKED_BEFORE_MODEL_RUN",
+  "selected_on": "2026-10-02",
+  "n_posts": 23,
+  "unique_creators": 22,
+  "selection_order": [
+    "REAL-01",
+    "REAL-02",
+    "REAL-03",
+    "REAL-04",
+    "REAL-05",
+    "REAL-06",
+    "REAL-07",
+    "REAL-08",
+    "REAL-09",
+    "REAL-10",
+    "REAL-11",
+    "REAL-12",
+    "REAL-13",
+    "REAL-14",
+    "REAL-15",
+    "REAL-16",
+    "REAL-17",
+    "REAL-18",
+    "REAL-19",
+    "REAL-20",
+    "REAL-21",
+    "REAL-22",
+    "REAL-23"
+  ],
+  "discovery_route_counts": {
+    "BRAND_MENTION_QUERY": 3,
+    "EXPERIENCE_QUERY": 4,
+    "GIFTED_QUERY": 6,
+    "PARTNERSHIP_HASHTAG_QUERY": 10
+  },
+  "relationship_signal_counts": {
+    "CREATOR_GIFT_MARKER": 7,
+    "CREATOR_PARTNERSHIP_MARKER": 11,
+    "NOT_ESTABLISHED": 5
+  },
+  "sha256": "b73fc4eccba93e560bcbe517b343db8276feea64b1233305c70cd38ac0cdea3f",
+  "note": "Public captions are observed input, not independently labelled compliance outcomes. Video and private relationship facts remain unverified."
+}

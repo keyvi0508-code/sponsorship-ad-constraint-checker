@@ -1,0 +1,9 @@
+{
+  "status": "PROMPT_LOCKED_BEFORE_MODEL_RUN",
+  "locked_on": "2026-10-02",
+  "prompt_version": "public-caption-2026-10-02-v1",
+  "model": "openai/gpt-6-sol",
+  "sha256": "2b35873a745fe2e15b2a7c73f4342dc7a1f459b6795b31efc9d36ed8228fb129",
+  "digest_definition": "SHA-256 of canonical JSON containing model, prompt version, both instruction strings, both response schemas, and SHA-256 of data/rulebook.json",
+  "note": "Locked before the first paid public-caption model request. Source selection was locked separately."
+}
