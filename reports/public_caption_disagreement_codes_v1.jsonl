@@ -1,0 +1,14 @@
+{"id":"REAL-02","tags":["PLACEMENT_QUESTION"],"audit_note":"Listed marker follows endorsement wording; mobile prominence remains unverified."}
+{"id":"REAL-05","tags":["PLACEMENT_QUESTION"],"audit_note":"Listed marker follows product copy; the caption alone cannot establish a breach."}
+{"id":"REAL-08","tags":["PLACEMENT_QUESTION","PRODUCT_CLAIM_QUESTION"],"audit_note":"Marker position and a personal product preference both prompted review."}
+{"id":"REAL-09","tags":["PRODUCT_CLAIM_QUESTION"],"audit_note":"The model queried first-hand experience for a scent opinion; use is unverified."}
+{"id":"REAL-10","tags":["PRODUCT_CLAIM_QUESTION","POSSIBLE_RULE_SCOPE_OVERREACH"],"audit_note":"The model applied the product-claim rule to a five-year collaboration statement as well as product preference."}
+{"id":"REAL-11","tags":["PLAIN_GIFT_WORDING_GAP"],"audit_note":"Plain Gifted wording was missed by the listed literal markers."}
+{"id":"REAL-12","tags":["RELATIONSHIP_PREREQUISITE_DIFFERENCE"],"audit_note":"AI withheld a caption judgement for #gifted because the actual relationship is unverified."}
+{"id":"REAL-13","tags":["RELATIONSHIP_PREREQUISITE_DIFFERENCE"],"audit_note":"AI withheld a caption judgement for #gifted because the actual relationship is unverified."}
+{"id":"REAL-15","tags":["PLAIN_GIFT_WORDING_GAP"],"audit_note":"Plain gifted wording was missed by the listed literal markers."}
+{"id":"REAL-16","tags":["PRODUCT_CLAIM_QUESTION"],"audit_note":"Favorites wording prompted a first-hand-use question; use is unverified."}
+{"id":"REAL-17","tags":["PRODUCT_CLAIM_QUESTION","NO_ESTABLISHED_CONNECTION_ESCALATION","POSSIBLE_RULE_SCOPE_OVERREACH"],"audit_note":"A product description was escalated although the captured caption does not establish a CHANEL material connection."}
+{"id":"REAL-20","tags":["PLACEMENT_QUESTION","PRODUCT_CLAIM_QUESTION"],"audit_note":"Late marker and bestsellers wording prompted two distinct questions."}
+{"id":"REAL-22","tags":["PRODUCT_CLAIM_QUESTION","NO_ESTABLISHED_CONNECTION_ESCALATION","POSSIBLE_RULE_SCOPE_OVERREACH"],"audit_note":"Viral wording was escalated despite no established material connection; materiality is debatable."}
+{"id":"REAL-23","tags":["PRODUCT_CLAIM_QUESTION","NO_ESTABLISHED_CONNECTION_ESCALATION","POSSIBLE_RULE_SCOPE_OVERREACH"],"audit_note":"A price statement was escalated despite no established material connection; it may be time- or market-specific."}
