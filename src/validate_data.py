@@ -10,6 +10,10 @@ ALLOWED_VERDICTS = {"PASS", "FLAG", "HUMAN_REVIEW"}
 REQUIRED_TOP_LEVEL = {"case_id", "language", "format", "multiple_brands", "caption", "scenes", "ground_truth"}
 REQUIRED_SCRIPT_INPUT = {"case_id", "language", "format", "multiple_brands", "caption", "scenes"}
 FORBIDDEN_SCRIPT_INPUT = {"ground_truth", "annotator_notes", "dataset_split"}
+MODEL_INPUT_FIELDS = (
+    "case_id", "language", "format", "multiple_brands", "caption", "scenes",
+    "creator_used_product", "claim_reference_sources",
+)
 
 
 def load_jsonl(path: Path) -> List[Dict[str, Any]]:
@@ -118,8 +122,5 @@ def validate_primary_set(cases: Iterable[Dict[str, Any]], expected_per_class: in
 
 
 def case_for_model(case: Dict[str, Any]) -> Dict[str, Any]:
-    """Return only review inputs; gold labels and rationales cannot leak to a model."""
-    return {
-        key: value for key, value in case.items()
-        if key not in {"ground_truth", "annotator_notes", "dataset_split"}
-    }
+    """Allowlist review inputs so present and future label fields stay private."""
+    return {key: case[key] for key in MODEL_INPUT_FIELDS if key in case}

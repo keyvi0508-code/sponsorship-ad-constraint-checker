@@ -111,7 +111,7 @@ def _post_response(request_body: Dict[str, Any], api_key: str, timeout: int = 90
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
-            "X-OpenRouter-Title": "CHANEL Sponsored Script Checker (PE6201)",
+            "X-OpenRouter-Title": "Creator Content Review Workbench",
         },
     )
     try:
