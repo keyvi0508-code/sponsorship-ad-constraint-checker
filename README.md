@@ -1,5 +1,7 @@
 # Creator Content Review Workbench
 
+**[Watch the 5-minute product demo](https://github.com/keyvi0508-code/sponsorship-ad-constraint-checker/releases/tag/demo-2026-10-04)** · [Download MP4](https://github.com/keyvi0508-code/sponsorship-ad-constraint-checker/releases/download/demo-2026-10-04/creator_content_review_demo_1080p.mp4)
+
 A human-in-the-loop review tool for sponsored creator scripts. It puts a fast, explainable keyword baseline beside an AI-assisted review, surfaces quoted evidence and uncertainty, and leaves the final disposition with a reviewer.
 
 This is an independent, local prototype based on CHANEL's publicly available [Social Media Guidelines](https://www.chanel.com/us/makeup/social-media-guidelines/). It is not affiliated with or approved by CHANEL and does not represent a brand's private campaign brief.
